@@ -1,0 +1,228 @@
+:root {
+    --color-bg: #1e1e1e;
+    --color-header: #0F0F0F;
+    --color-accent: #FF6614;
+    --color-accent-dark: #7a3a10;
+    --color-text: #A1A1A1;
+    --color-text-dark: #333;
+    --color-white: #fff;
+    --color-shadow: rgba(0,0,0,0.15);
+    --font-main: 'Inconsolata', monospace;
+    --font-title: 'Irish Grover', system-ui;
+}
+.logo{
+    border-radius:50%;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+h2, label, p{
+    color: var(--color-text-dark);
+    font-family: var(--font-main);
+}
+
+body {
+    background-color: var(--color-bg);
+    font-family: var(--font-main);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background-color: var(--color-header);
+    box-shadow: 0 2px 8px var(--color-shadow);
+    padding: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    height: 85px;
+}
+
+svg {
+    width: 1.7rem;
+    height: 2rem;
+    fill: var(--color-white);
+    margin-left: 0;
+}
+
+.TituloP {
+    font-family: var(--font-title);
+    color: var(--color-white);
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    margin-left: 2.5rem;
+    text-shadow: 1px 2px 8px #000;
+}
+
+.ul-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-right: 2.5rem;
+}
+
+.li-header {
+    color: var(--color-white);
+    list-style: none;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+    cursor: pointer;
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+}
+
+.li-header:hover, .li-header:focus {
+    color: var(--color-accent);
+    background: rgba(255,102,20,0.08);
+    outline: none;
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+}
+
+
+
+
+
+
+.recuperar-container {
+    max-width: 400px;
+    margin: 40px auto;
+    background: #222;
+    padding: 32px 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px #0004;
+    color: #fff;
+}
+
+.recuperar-container h2 {
+    margin-bottom: 18px;
+    color: #FF6614;
+}
+
+.recuperar-container label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.recuperar-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 18px;
+    border: none;
+    border-bottom: 2px solid #888;
+    background: transparent;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.recuperar-container button {
+    width: 100%;
+    padding: 12px;
+    background: #FF6614;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+#recuperarMensaje {
+    margin-top: 18px;
+    color: #FF6614;
+    text-align: center;
+}
+
+
+
+
+
+
+
+footer {
+    background-color: var(--color-header);
+    color: var(--color-text);
+    padding: 2rem 0;
+    font-size: 0.9rem;
+    position: relative;
+    margin-top: 8vh;
+}
+
+/* Footer estilos con variables del root y unidades vh/vw */
+.footer-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 4vw;
+    padding: 4vh 2vw;
+    background: var(--color-header);
+    color: var(--color-white);
+    flex-wrap: wrap;
+}
+
+.footer-phone {
+    min-width: 20vw;
+}
+
+.footer-phone-number {
+    margin-top: 1vh;
+    color: var(--color-text);
+}
+
+.footer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.footer-menu a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.footer-menu a:hover {
+    color: var(--color-accent);
+}
+
+.footer-map {
+    flex: 1;
+    min-width: 30vw;
+}
+
+.footer-map{
+    text-align: right;
+}
+
+.footer-map iframe {
+    width: 30vw;
+    height: 30vh;
+    border-radius: 1vw;
+    border: none;
+    box-shadow: 0 0.5vh 2vh var(--color-shadow);
+}
+
+@media (max-width: 900px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 2vh;
+        padding: 3vh 2vw;
+    }
+    .footer-map iframe {
+        height: 20vh;
+    }
+}
