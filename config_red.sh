@@ -6,7 +6,7 @@ echo "=== Instalando script de red en /usr/local/bin/config_red.sh ==="
 # 1. Crear (o sobrescribir) el script de configuración
 cat > /usr/local/bin/config_red.sh <<'EOF'
 #!/bin/bash
-INTERFAZ="ens18"
+INTERFAZ="enp0s3"
 
 echo "Ver interfaces disponibles: "
 nmcli device status
