@@ -1,19 +1,24 @@
-#!/bin/bash
-# Instalador de reglas nftables para Restaurante
-# Versión simple: sobrescribe siempre
+#!/bin/bash#!/bin/bash
+# Instalador de reglas nftables para Restaurante en Rocky Linux
+# Funciona desde cero
 
-echo "=== Configuración de nftables para Restaurante ==="
+echo "=== Iniciando configuración de nftables ==="
 
-# 1. Desactivar firewalld
+# 1. Instalar nftables si no está instalado
+if ! command -v nft &>/dev/null; then
+    echo "Instalando nftables..."
+    sudo dnf install nftables -y
+fi
+
+# 2. Desactivar firewalld
 echo "Desactivando firewalld..."
-systemctl stop firewalld 2>/dev/null || true
-systemctl disable firewalld 2>/dev/null || true
-systemctl mask firewalld 2>/dev/null || true
+sudo systemctl stop firewalld 2>/dev/null || true
+sudo systemctl disable firewalld 2>/dev/null || true
+sudo systemctl mask firewalld 2>/dev/null || true
 
-# 2. Crear (o sobrescribir) archivo de configuración de nftables
-echo "Sobrescribiendo /etc/nftables.conf..."
-cat > /etc/nftables.conf <<'EOF'
-#!/usr/sbin/nft -f
+# 3. Crear (o sobrescribir) archivo de configuración de nftables
+echo "Creando /etc/nftables.conf..."
+sudo tee /etc/nftables.conf > /dev/null <<'EOF'
 flush ruleset
 
 table ip filter {
@@ -51,17 +56,19 @@ table ip filter {
 }
 EOF
 
-# 3. Ajustar permisos y propietario
-echo "Cambiando permisos de /etc/nftables.conf..."
-chown root:Restaurante /etc/nftables.conf 2>/dev/null || true
-chmod 740 /etc/nftables.conf
+# 4. Ajustar permisos
+echo "Ajustando permisos de /etc/nftables.conf..."
+sudo chown root:Restaurante /etc/nftables.conf 2>/dev/null || true
+sudo chmod 740 /etc/nftables.conf
 
-# 4. Aplicar configuración y habilitar nftables
-echo "Aplicando configuración..."
-nft -f /etc/nftables.conf
+# 5. Aplicar configuración y habilitar servicio nftables
+echo "Aplicando reglas..."
+sudo nft -f /etc/nftables.conf
 
 echo "Habilitando servicio nftables..."
-systemctl enable nftables
-systemctl restart nftables
+sudo systemctl enable nftables
+sudo systemctl restart nftables
 
-echo "=== Instalación completada: nftables configurado y en ejecución ==="
+echo "=== Configuración completada: nftables funcionando ==="
+
+
