@@ -1,5 +1,5 @@
-#!/bin/bash#!/bin/bash
-# Instalador de reglas nftables para Restaurante en Rocky Linux
+#!/bin/bash
+# Script completo para configurar nftables en Rocky Linux
 # Funciona desde cero
 
 echo "=== Iniciando configuración de nftables ==="
@@ -16,30 +16,21 @@ sudo systemctl stop firewalld 2>/dev/null || true
 sudo systemctl disable firewalld 2>/dev/null || true
 sudo systemctl mask firewalld 2>/dev/null || true
 
-# 3. Crear (o sobrescribir) archivo de configuración de nftables
+# 3. Crear archivo de reglas limpio
 echo "Creando /etc/nftables.conf..."
 sudo tee /etc/nftables.conf > /dev/null <<'EOF'
 flush ruleset
 
 table ip filter {
-  set blacklist {
-    type ipv4_addr
-    timeout 10m
-  }
-
   chain input {
     type filter hook input priority 0;
     policy drop;
 
-    ip saddr @blacklist drop
     iif "lo" accept
     ct state established,related accept
 
-    # Permitir solo HTTP/HTTPS y SSH en puerto 3333
+    # Permitir HTTP/HTTPS y SSH en puerto 3333
     tcp dport {80, 443, 3333} ct state new accept
-
-    # Limitar demasiadas conexiones nuevas al puerto web
-    tcp dport {80, 443} ct state new limit rate over 20/10s add @blacklist { ip saddr }
 
     counter drop
   }
@@ -58,17 +49,20 @@ EOF
 
 # 4. Ajustar permisos
 echo "Ajustando permisos de /etc/nftables.conf..."
-sudo chown root:Restaurante /etc/nftables.conf 2>/dev/null || true
-sudo chmod 740 /etc/nftables.conf
+sudo chown root:root /etc/nftables.conf
+sudo chmod 640 /etc/nftables.conf
 
-# 5. Aplicar configuración y habilitar servicio nftables
-echo "Aplicando reglas..."
-sudo nft -f /etc/nftables.conf
-
-echo "Habilitando servicio nftables..."
+# 5. Habilitar y arrancar servicio nftables
+echo "Habilitando y arrancando nftables..."
 sudo systemctl enable nftables
 sudo systemctl restart nftables
 
-echo "=== Configuración completada: nftables funcionando ==="
+# 6. Aplicar reglas
+echo "Aplicando reglas..."
+sudo nft -f /etc/nftables.conf
 
+# 7. Verificar
+echo "=== Reglas cargadas actualmente ==="
+sudo nft list ruleset
 
+echo "=== Configuración de nftables completada ==="
