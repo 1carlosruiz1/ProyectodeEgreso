@@ -31,7 +31,7 @@ nmcli con mod "$INTERFAZ" ipv4.dns "$DNS"
 
 # Activar la conexión
 echo "=== Activando la conexión ==="
-nmcli con up "$INTERFAZ"
+nmcli con up "$INTERFAZ" || nmcli con up "$INTERFAZ" --ask
 
 # Mostrar configuración aplicada
 echo "=== Configuración aplicada ==="
@@ -40,8 +40,8 @@ EOF
 
 # 2. Ajustar permisos y propietario
 echo "Cambiando permisos de /usr/local/bin/config_red.sh..."
-chown root:Restaurante /usr/local/bin/config_red.sh 2>/dev/null || true
-chmod 750 /usr/local/bin/config_red.sh
+chown root:root /usr/local/bin/config_red.sh
+chmod 740 /usr/local/bin/config_red.sh
 
 # 3. Ejecutar el script
 echo "Ejecutando script de configuración de red..."
