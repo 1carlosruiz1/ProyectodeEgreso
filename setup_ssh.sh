@@ -20,9 +20,6 @@ systemctl start sshd
 # Archivo de configuración
 CONFIG_FILE="/etc/ssh/sshd_config"
 
-# Hacer backup del archivo original
-cp $CONFIG_FILE ${CONFIG_FILE}.bak
-
 # Cambiar el puerto a 3333
 if grep -q "^#\?Port " $CONFIG_FILE; then
     sed -i 's/^#\?Port .*/Port 3333/' $CONFIG_FILE
@@ -52,12 +49,12 @@ echo "Usuarios permitidos: Gerente y Usuario"
 echo "Root bloqueado"
 EOF
 
-# 2. Ajustar permisos y propietario
+# Ajustar permisos y propietario
 echo "Cambiando permisos de /usr/local/bin/setup_ssh.sh..."
-chown root:Restaurante /usr/local/bin/setup_ssh.sh 2>/dev/null || true
+chown root:root /usr/local/bin/setup_ssh.sh
 chmod 740 /usr/local/bin/setup_ssh.sh
 
-# 3. Ejecutar el script
+# Ejecutar el script
 echo "Ejecutando script de configuración de SSH..."
 /usr/local/bin/setup_ssh.sh
 
