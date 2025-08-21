@@ -69,7 +69,10 @@ echo "Configuración de nftables completada"
 EOF
 
 # Dar permisos de ejecución al script
-sudo chmod 700 "$SETUP_SCRIPT"
+sudo chmod +x "$SETUP_SCRIPT"
 sudo chown root:root "$SETUP_SCRIPT"
+
+echo "Ejecutando la configuración de NFTables "
 /usr/local/bin/nftables.sh
 echo "Script $SETUP_SCRIPT creado y listo para usar."
+
