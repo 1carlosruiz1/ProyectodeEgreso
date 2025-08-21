@@ -9,7 +9,7 @@ DEST_INCR="/backup/incrementales"
 echo "Creando directorios de backup si no existen..."
 mkdir -p "$DEST_FULL" "$DEST_INCR"
 
-echo "Creando $BACKUP_SCRIPT..."
+echo "Creando $BACKUP_SCRIPT..." #con las '' en EOF haces q las variables como date se queden como variables
 cat << 'EOF' > "$BACKUP_SCRIPT"
 #!/bin/bash
 if [ -n "$1" ]; then
@@ -91,8 +91,6 @@ CRON_LINE="0 0 * * * $BACKUP_SCRIPT"
 if ! sudo crontab -l | grep -Fq "$BACKUP_SCRIPT"; then
     (sudo crontab -l 2>/dev/null; echo "$CRON_LINE") | sudo crontab -
     echo "Tarea agregada al crontab de root: $CRON_LINE"
-else
-    echo "La tarea ya existía en crontab."
 fi
 
-echo "Instalación completa. El script se ejecutará todos los días a las 00:00."
+echo "Instalación del backup automatico completa"
