@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS BDProyecto;
-CREATE DATABASE BDProyecto;
+Create database BDProyecto;
 USE BDProyecto;
-CREATE TABLE Usuario (
+CREATE TABLE Usuarios (
     ID_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE Usuario (
 CREATE TABLE Cliente (
     ID_cliente INT PRIMARY KEY,
     PuntosCliente INT DEFAULT 0,
-    FOREIGN KEY (ID_cliente ) REFERENCES Usuario(ID_usuario)
+    FOREIGN KEY (ID_cliente ) REFERENCES Usuarios(ID_usuario)
 );
 
 
@@ -30,7 +30,7 @@ CREATE TABLE EtiquetaCliente (
 
 CREATE TABLE Empleado (
     ID_empleado INT PRIMARY KEY,
-    FOREIGN KEY (ID_empleado) REFERENCES Usuario(ID_usuario)
+    FOREIGN KEY (ID_empleado) REFERENCES Usuarios(ID_usuario)
 );
 
 
@@ -158,6 +158,7 @@ CREATE TABLE Comentario (
     fecha DATETIME NOT NULL,
     FOREIGN KEY (ID_cliente) REFERENCES Cliente(ID_cliente)
 );
+
 
 
 
