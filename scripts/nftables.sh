@@ -2,7 +2,7 @@
 # Script completo para configurar nftables en Rocky Linux
 # Funciona desde cero
 
-echo "=== Iniciando configuración de nftables ==="
+echo "Iniciando configuración de nftables "
 
 # 1. Instalar nftables si no está instalado
 if ! command -v nft &>/dev/null; then
@@ -62,8 +62,9 @@ echo "Aplicando reglas..."
 sudo nft -f /etc/nftables.conf
 
 # 7. Verificar
-echo "=== Reglas cargadas actualmente ==="
+echo "Reglas cargadas actualmente "
 sudo nft list ruleset
 
-echo "=== Configuración de nftables completada ==="
+echo "Configuración de nftables completada "
+
 
