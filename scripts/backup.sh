@@ -86,7 +86,7 @@ EOF
 chmod +x "$BACKUP_SCRIPT"
 echo "$BACKUP_SCRIPT creado y con permisos de ejecución."
 
-# Agregar al crontab de root si no existe ya
+# Agregar al crontab si no eiste, por si lo instalo varias veces
 CRON_LINE="0 0 * * * $BACKUP_SCRIPT"
 if ! sudo crontab -l | grep -Fq "$BACKUP_SCRIPT"; then
     (sudo crontab -l 2>/dev/null; echo "$CRON_LINE") | sudo crontab -
