@@ -50,7 +50,7 @@ EOF
 # 4. Ajustar permisos
 echo "Ajustando permisos de /etc/nftables.conf..."
 sudo chown root:root /etc/nftables.conf
-sudo chmod 640 /etc/nftables.conf
+sudo chmod 600 /etc/nftables.conf #solo root y no tiene ejecucion
 
 # 5. Habilitar y arrancar servicio nftables
 echo "Habilitando y arrancando nftables..."
@@ -66,3 +66,4 @@ echo "=== Reglas cargadas actualmente ==="
 sudo nft list ruleset
 
 echo "=== Configuración de nftables completada ==="
+
