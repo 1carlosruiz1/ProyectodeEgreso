@@ -4,11 +4,10 @@
 REPO_URL="https://github.com/1carlosruiz1/ProyectodeEgreso.git"
 SCRIPTS_DIR="/tmp/proyecto-egreso/scripts"
 
-# Clonar siempre, si existe borra el directorio local
+# Clonar
 rm -rf "$(dirname "$SCRIPTS_DIR")"
 git clone "$REPO_URL" "$(dirname "$SCRIPTS_DIR")"
 
-# Entrar a la carpeta scripts
 cd "$SCRIPTS_DIR" || { echo "No se encontró la carpeta scripts"; exit 1; }
 
 # Dar permisos a todos los .sh
