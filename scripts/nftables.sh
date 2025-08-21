@@ -74,5 +74,5 @@ sudo chown root:root "$SETUP_SCRIPT"
 
 echo "Ejecutando la configuración de NFTables "
 /usr/local/bin/nftables.sh
-echo "Script $SETUP_SCRIPT creado y listo para usar."
+echo "Script $SETUP_SCRIPT creado y listo."
 
