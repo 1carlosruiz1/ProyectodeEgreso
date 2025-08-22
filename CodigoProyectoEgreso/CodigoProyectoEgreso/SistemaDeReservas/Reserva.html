@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>La Parrilla</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <!-- favicon -->
+    <link id="logo" rel="shortcut icon" href="../IMG/Logo.png" />
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../index/index.css">
+    <link rel="stylesheet" href="CSSReserva.css">    
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="TituloP">
+            <h1>La Parrilla</h1>
+        </div>
+        <nav>
+            <ul class="ul-header">
+                <a href="../index/index.html"><li class="li-header">Inicio</li></a>
+                <a href="Reserva.html"><li class="li-header">Reservas</li></a>
+                <li class="li-header">Menu</li>
+                <a href="../nosotros/Nosotros.html"><li class="li-header">Nosotros</li></a>
+                <li class="li-header">Horarios</li>
+            </ul>
+        </nav>
+        <nav class="IconoLogin" id="iconoLogin">
+             <a href="#" aria-label="Iniciar sesión">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 7C9.65685 7 11 5.65685 11 4C11 2.34315 9.65685 1 8 1C6.34315 1 5 2.34315 5 4C5 5.65685 6.34315 7 8 7Z" fill="#ffffff"></path>
+                    <path d="M14 12C14 10.3431 12.6569 9 11 9H5C3.34315 9 2 10.3431 2 12V15H14V12Z" fill="#ffffff"></path>
+                </svg>
+            </a>
+        </nav>
+    </header>
+
+    <div class="card">
+        <form id="form">
+            <label><!-- Calros hace que aca diga el nombre que puso el usuario al crear su cuenta y que se guarde en la base de datos la reserva con el nombre --></label>
+            <label>Elige la fecha de la reserva</label> 
+            <input type="date" id="fecha" name="fecha" placeholder="Fecha de la reserva" required><br>
+            <label>Elige la hora de inicio de la reserva</label>
+            <input type="time" id="horaInicio" name="horaInicio"placeholder="Hora de la reserva" required><br>
+            <label>Elige la hora de fin de la reserva</label>
+            <input type="time" id="horaFin" name="horaFin" placeholder="Hora de la reserva" required><br>
+            
+            <button type="submit" id="button">¡Reservar!</button>
+
+        </form>
+    </div>
+
+    <footer>
+    <div class="footer-container">
+        <!-- Teléfono -->
+        <div class="footer-phone">
+            <strong>Teléfono:</strong>
+            <div class="footer-phone-number">+598 123 456 789</div>
+        </div>
+        <!-- Menú vertical -->
+        <ul class="footer-menu">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="#">Promociones</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="../Nosotros.html">Nosotros</a></li>
+            <li><a href="#">Horarios</a></li>
+        </ul>
+        <!-- Mapa interactivo -->
+        <div class="footer-map">
+            <iframe 
+                src="https://www.google.com/maps?q=De+los+Colibries,+15800+Ciudad+de+la+Costa,+Departamento+de+Canelones&output=embed" allowfullscreen="" loading="lazy"
+            ></iframe>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- Scripts -->
+    <script src="JSReserva.js"></script>
+</body>
+</html>
