@@ -7,8 +7,6 @@ echo "Creando script de instalación."
 
 cat << 'EOF' > "$INSTALL_DIR/$SCRIPT_NAME"
 #!/usr/bin/env bash
-
-
 while true; do
 	clear
 	echo "--- MENÚ DE ADMINISTRACIÓN ---"
@@ -18,9 +16,7 @@ while true; do
 	echo "4. Opciones de Backups"
 	echo "5. Salir"
 
-
 	read -p "Escriba un número de opción: " opcionElejida
-
 
 	case "$opcionElejida" in
     	1)
