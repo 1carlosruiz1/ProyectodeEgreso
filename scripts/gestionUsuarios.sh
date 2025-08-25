@@ -1,6 +1,6 @@
 #!/bin/bash
 INSTALL_DIR="/usr/local/bin"
-SCRIPT_NAME="gestionBackups.sh"
+SCRIPT_NAME="gestionUsuarios.sh"
 
 echo "Creando script de instalación..."
 
