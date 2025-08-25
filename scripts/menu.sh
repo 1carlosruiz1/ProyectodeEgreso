@@ -32,7 +32,7 @@ while true; do
         	nano "$direccionArchivo/$nombreArchivo"
         	;;
     	3)
-			usuarios.sh
+			gestionUsuarios.sh
 			;;        	
         4)
 			gestionBackups.sh
