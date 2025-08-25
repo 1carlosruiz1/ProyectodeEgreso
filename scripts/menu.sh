@@ -50,18 +50,6 @@ while true; do
         	;;
 	esac
 done
-
-
-
-
-
-
-
-
 EOF
-
-# Dar permisos de ejecución
 chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
-
 echo "Script instalado en $INSTALL_DIR/$SCRIPT_NAME con permisos de ejecución."
-echo "Podés ejecutarlo con: $INSTALL_DIR/$SCRIPT_NAME"
