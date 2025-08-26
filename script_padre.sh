@@ -1,13 +1,16 @@
 #!/bin/bash
 
-# Configuración
 REPO_URL="https://github.com/1carlosruiz1/ProyectodeEgreso.git"
-SCRIPTS_DIR="/tmp/proyecto-egreso/scripts"
+PROY_DIR="/tmp/proyecto-egreso"
+SCRIPTS_DIR="$PROY_DIR/scripts"
 
-# Clonar
-rm -rf "$(dirname "$SCRIPTS_DIR")"
-git clone "$REPO_URL" "$(dirname "$SCRIPTS_DIR")"
+# Borrar cualquier clon previo
+rm -rf "$PROY_DIR"
 
+# Clonar el repo completo
+git clone "$REPO_URL" "$PROY_DIR"
+
+# Entrar a la carpeta scripts
 cd "$SCRIPTS_DIR" || { echo "No se encontró la carpeta scripts"; exit 1; }
 
 # Dar permisos a todos los .sh
