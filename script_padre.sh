@@ -1,8 +1,9 @@
 #!/bin/bash
 
 REPO_URL="https://github.com/1carlosruiz1/ProyectodeEgreso.git"
-PROY_DIR="/tmp/proyecto-egreso"
+PROY_DIR="/home/Gerente/Descargas"
 SCRIPTS_DIR="$PROY_DIR/scripts"
+mkdir /home/Gerente/Descargas/scripts
 
 # Borrar cualquier clon previo
 rm -rf "$PROY_DIR"
