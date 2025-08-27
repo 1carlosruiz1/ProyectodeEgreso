@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Crear (o sobrescribir) el script
-cat > /usr/local/bin/ssh.sh <<'EOF'
+mkdir -p /usr/local/bin/scriptsProyecto/
+cat > /usr/local/bin/scriptsProyecto/ssh.sh <<'EOF'
 #!/bin/bash
 # Instalación y configuración automática de SSH en Rocky Linux
 # Configuración segura: puerto 3333, solo usuarios Gerente y Usuario, root bloqueado
@@ -49,11 +49,11 @@ EOF
 
 # Ajustar permisos y propietario
 echo "Cambiando permisos"
-chown root:root /usr/local/bin/setup_ssh.sh
-chmod +x /usr/local/bin/setup_ssh.sh
+chown root:root /usr/local/bin/scriptsProyecto/ssh.sh
+chmod +x /usr/local/bin/scriptsProyecto/ssh.sh
 
 # Ejecutar el script
 echo "Ejecutando script de configuración de SSH..."
-/usr/local/bin/setup_ssh.sh
+/usr/local/bin/scriptsProyecto/ssh.sh
 
 echo "Configuración de SSH terminada"
