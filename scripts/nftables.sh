@@ -8,6 +8,16 @@ mkdir -p "$DEST"
 
 sudo tee "$SETUP_SCRIPT" > /dev/null <<'EOF'
 #!/bin/bash
+
+LOG_DIR="/backup/logs"
+mkdir -p "$LOG_DIR"
+
+LOG_FILE="$LOG_DIR/registro.log"
+exec >> "$LOG_FILE" 2>&1
+echo ""
+echo "=== [$0] Inicio de ejecución: $(date) ==="
+
+
 echo "Iniciando configuración de nftables"
 
 # 1. Instalar nftables si no está instalado
@@ -77,5 +87,6 @@ sudo chown root:root "$SETUP_SCRIPT"
 echo "Ejecutando la configuración de NFTables "
 /usr/local/bin/scriptsProyecto/nftables.sh
 echo "Script $SETUP_SCRIPT creado y listo."
+
 
 
