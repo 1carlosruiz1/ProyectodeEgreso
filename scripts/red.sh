@@ -3,7 +3,7 @@
 
 echo "Instalando script de red en /usr/local/bin/scriptsProyecto/red.sh "
 
-mkdir /usr/local/bin/scriptsProyecto/
+mkdir -p /usr/local/bin/scriptsProyecto/
 cat > /usr/local/bin/scriptsProyecto/red.sh <<'EOF'
 #!/bin/bash
 
