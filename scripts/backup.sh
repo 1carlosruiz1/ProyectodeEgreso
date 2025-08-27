@@ -85,6 +85,7 @@ EOF
 
 # Dar permisos de ejecución
 chmod +x "$BACKUP_SCRIPT"
+chown root:root /usr/local/bin/scriptsProyecto/backup.sh
 echo "$BACKUP_SCRIPT creado y con permisos de ejecución."
 
 # Agregar al crontab si no eiste, por si lo instalo varias veces
