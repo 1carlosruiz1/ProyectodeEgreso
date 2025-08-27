@@ -13,6 +13,16 @@ mkdir -p "$DEST_FULL" "$DEST_INCR" "$DEST_BACKUP"
 echo "Creando $BACKUP_SCRIPT..." #con las '' en EOF haces q las variables como date se queden como variables
 cat << 'EOF' > "$BACKUP_SCRIPT"
 #!/bin/bash
+
+LOG_DIR="/backup/logs"
+mkdir -p "$LOG_DIR"
+
+LOG_FILE="$LOG_DIR/registro.log"
+exec >> "$LOG_FILE" 2>&1
+echo ""
+echo "=== [$0] Inicio de ejecución: $(date) ==="
+
+
 if [ -n "$1" ]; then
     day="$1"
 else
