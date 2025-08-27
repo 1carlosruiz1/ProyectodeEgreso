@@ -124,4 +124,5 @@ done
 EOF
 
 chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
+chown root:root /usr/local/bin/scriptsProyecto/gestionBackups.sh
 echo "Script instalado en $INSTALL_DIR/$SCRIPT_NAME con permisos de ejecución."
