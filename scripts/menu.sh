@@ -47,34 +47,66 @@ while true; do
 				echo "1. Resetear configuraciones de ssh"
 				echo "2. Resetear configuraciones de nftables"
 				echo "3. Resetear configuraciones de red"
-				echo "4. Resetear sistema de backups automaticos"
-				echo "5. Salir"
+				echo "4. Resetear sistema de backups automáticos"
+				echo "5. Volver"
 				read -p "Escriba un número de opción: " opcionElejida2
 
 				case "$opcionElejida2" in
-					1)
-						ssh.sh
-						;;
-					2)
-						nftables.sh
-						;;	
-					3)
-						red.sh
-						;;
-					4) 
-						scriptsInstalacion/backup.sh
-						;;
-					5)
-						exit 0
-						;;
-    				*)
+					1) ssh.sh ;;
+					2) nftables.sh ;;	
+					3) red.sh ;;
+					4) scriptsInstalacion/backup.sh ;;
+					5) break ;;   # <- vuelve al menú principal
+    				*) 
         				echo "Opción inválida"
         				read -p "Presione Enter para continuar"
         				;;	
 				esac
 			done
 			;;
+		6)
+			echo "=== CONFIGURACIONES ACTIVAS ==="
 
+			echo ""
+			echo "Configuración activa de SSH:"
+			sshd -T 2>/dev/null | more
+			echo ""
+			echo "Configuración activa de nftables:"
+			sudo nft list ruleset
+			echo ""
+			echo "Configuración de red actual:"
+			echo "Interfaces de red:"
+			ip addr show
+			echo "Tabla de enrutamiento:"
+			ip route show
+			echo "DNS en uso:"
+			resolvectl status 2>/dev/null || cat /etc/resolv.conf
+			read -p "Presione Enter para continuar"
+			;;
+		7)
+			while true; do
+				clear
+				echo "--- VISOR DE LOGS ---"
+				echo "1. Ver todos los registros"
+				echo "2. Ver registros en vivo"
+				echo "3. Volver"
+				read -p "Elija un número de opción: " logOpcion
+				case "$logOpcion" in
+					1) 
+						cat /backup/logs/scripts_unificados.log
+						read -p "Presione Enter para continuar"
+						;;
+					2)
+						tail -f /backup/logs/scripts_unificados.log
+						;;
+					3) break ;;
+					*) 
+						echo "Opción inválida"
+						read -p "Presione Enter para continuar"
+						;;
+				esac
+			done
+			;;
 		8)
 			exit 0
 			;;
@@ -87,3 +119,6 @@ done
 EOF
 chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
 echo "Script instalado en $INSTALL_DIR/$SCRIPT_NAME con permisos de ejecución."
+
+echo "Gerente ALL=(ALL) NOPASSWD: $INSTALL_DIR/$SCRIPT_NAME" | sudo tee /etc/sudoers.d/menu_gerente
+sudo chmod 440 /etc/sudoers.d/menu_gerente
