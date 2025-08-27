@@ -14,7 +14,10 @@ while true; do
 	echo "2. Crear archivo nuevo"
 	echo "3. Opciones de Usuarios"
 	echo "4. Opciones de Backups"
-	echo "5. Salir"
+	echo "5. Opciones de restauración de servicios"
+	echo "6. Ver configuraciones activas"
+	echo "7. Ver log del sistema y backups"
+	echo "8. Salir"
 
 	read -p "Escriba un número de opción: " opcionElejida
 
@@ -38,6 +41,41 @@ while true; do
 			gestionBackups.sh
 			;;
 		5)
+			while true; do
+				clear
+				echo "--- MENÚ DE RESTAURACIÓN ---"
+				echo "1. Resetear configuraciones de ssh"
+				echo "2. Resetear configuraciones de nftables"
+				echo "3. Resetear configuraciones de red"
+				echo "4. Resetear sistema de backups automaticos"
+				echo "5. Salir"
+				read -p "Escriba un número de opción: " opcionElejida2
+
+				case "$opcionElejida2" in
+					1)
+						ssh.sh
+						;;
+					2)
+						nftables.sh
+						;;	
+					3)
+						red.sh
+						;;
+					4) 
+						scriptsInstalacion/backup.sh
+						;;
+					5)
+						exit 0
+						;;
+    				*)
+        				echo "Opción inválida"
+        				read -p "Presione Enter para continuar"
+        				;;	
+				esac
+			done
+			;;
+
+		8)
 			exit 0
 			;;
     	*)
