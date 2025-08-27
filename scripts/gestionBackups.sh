@@ -1,9 +1,9 @@
 #!/bin/bash
-INSTALL_DIR="/usr/local/bin"
+INSTALL_DIR="/usr/local/bin/scriptsProyecto/"
 SCRIPT_NAME="gestionBackups.sh"
 
 echo "Creando script de instalación..."
-
+mkdir "$INSTALL_DIR"
 cat << 'EOF' > "$INSTALL_DIR/$SCRIPT_NAME"
 #!/usr/bin/env bash
 
@@ -107,7 +107,7 @@ while true; do
             read -p "Presione Enter para continuar..."
             ;;
         4)  
-            /usr/local/bin/backup.sh Sunday
+            /usr/local/bin/scriptsProyecto/backup.sh Sunday
             read -p "Presione Enter para continuar."
             ;;
         5)  
