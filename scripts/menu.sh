@@ -93,11 +93,11 @@ while true; do
 				read -p "Elija un número de opción: " logOpcion
 				case "$logOpcion" in
 					1) 
-						cat /backup/logs/scripts_unificados.log
+						cat /backup/logs/registro.log
 						read -p "Presione Enter para continuar"
 						;;
 					2)
-						tail -f /backup/logs/scripts_unificados.log
+						tail -f /backup/logs/registro.log
 						;;
 					3) break ;;
 					*) 
