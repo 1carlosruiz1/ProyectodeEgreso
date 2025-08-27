@@ -3,7 +3,7 @@ INSTALL_DIR="/usr/local/bin/scriptsProyecto/"
 SCRIPT_NAME="gestionBackups.sh"
 
 echo "Creando script de instalación..."
-mkdir "$INSTALL_DIR"
+mkdir -p "$INSTALL_DIR"
 cat << 'EOF' > "$INSTALL_DIR/$SCRIPT_NAME"
 #!/usr/bin/env bash
 
