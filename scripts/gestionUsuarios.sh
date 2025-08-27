@@ -1,9 +1,9 @@
 #!/bin/bash
-INSTALL_DIR="/usr/local/bin"
+INSTALL_DIR="/usr/local/bin/scriptsProyecto/"
 SCRIPT_NAME="gestionUsuarios.sh"
 
 echo "Creando script de instalación..."
-
+mkdir "$INSTALL_DIR"
 cat << 'EOF' > "$INSTALL_DIR/$SCRIPT_NAME"
 #!/usr/bin/env bash
 
