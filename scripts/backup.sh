@@ -2,12 +2,13 @@
 
 # Instalador de backup.sh
 
-BACKUP_SCRIPT="/usr/local/bin/backup.sh"
+BACKUP_SCRIPT="/usr/local/bin/scriptsProyecto/backup.sh"
+DEST_BACKUP="/usr/local/bin/scriptsProyecto/"
 DEST_FULL="/backup/completos"
 DEST_INCR="/backup/incrementales"
 
 echo "Creando directorios de backup si no existen..."
-mkdir -p "$DEST_FULL" "$DEST_INCR"
+mkdir -p "$DEST_FULL" "$DEST_INCR" "$DEST_BACKUP"
 
 echo "Creando $BACKUP_SCRIPT..." #con las '' en EOF haces q las variables como date se queden como variables
 cat << 'EOF' > "$BACKUP_SCRIPT"
