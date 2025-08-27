@@ -7,6 +7,15 @@ mkdir -p "$INSTALL_DIR"
 cat << 'EOF' > "$INSTALL_DIR/$SCRIPT_NAME"
 #!/usr/bin/env bash
 
+LOG_DIR="/backup/logs"
+mkdir -p "$LOG_DIR"
+
+LOG_FILE="$LOG_DIR/registro.log"
+exec >> "$LOG_FILE" 2>&1
+echo ""
+echo "=== [$0] Inicio de ejecución: $(date) ==="
+
+
 DEST_FULL="/backup/completos"
 DEST_INCR="/backup/incrementales"
 RESTORE_DIR="/opt/proyecto"
