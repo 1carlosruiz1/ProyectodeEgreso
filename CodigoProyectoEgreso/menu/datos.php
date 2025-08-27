@@ -1,10 +1,15 @@
 <?php
- include '../sesion/conexion.php';
+include '../sesion/conexion.php';
 
 
-        $sql = "SELECT * FROM plato";
-        $stmt = $con->prepare($sql);
-        $stmt->execute();
-        $res = $stmt->fetch(PDO::FETCH_ASSOC);
+$sql = "SELECT * FROM plato";
+$stmt = $con->prepare($sql);
+$stmt->execute();
+$res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if (!$res) {
+       echo json_encode(["error" => "no hay datos"]);
 
-        echo json_encode( value: $res);
+} else {
+       echo json_encode(["success" => $res]);
+
+}

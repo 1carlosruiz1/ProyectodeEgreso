@@ -129,26 +129,15 @@ if (storague) {
             console.log("no se logueo: "+data.error);
             ['Perfil', 'Mis Reservas', 'Favoritos'].forEach(opcion => {
                 const li = document.createElement('li');
-                li.textContent = opcion;
-                li.style.padding = '0.2em 0.5em';
-                li.style.borderRadius = '4px';
-                li.style.fontSize = '1.1rem';
-                li.style.color = 'var(--color-white)';
-                li.style.fontFamily = "var(--font-main)";
-                li.style.cursor = 'pointer';
-                li.style.transition = 'color 0.2s, background 0.2s, text-decoration 0.2s';
-                li.addEventListener('mouseenter', () => {
-                    li.style.color = 'var(--color-accent)';
-                    li.style.background = 'rgba(255,102,20,0.08)';
-                    li.style.textDecoration = 'underline';
-                    li.style.textDecorationColor = 'var(--color-accent)';
-                });
-                li.addEventListener('mouseleave', () => {
-                    li.style.color = 'var(--color-white)';
-                    li.style.background = 'none';
-                    li.style.textDecoration = 'none';
-                });
-                dropdown.appendChild(li);
+li.textContent = opcion;
+li.classList.add('dropdown-opcion');
+li.addEventListener('mouseenter', () => {
+    li.classList.add('dropdown-opcion-hover');
+});
+li.addEventListener('mouseleave', () => {
+    li.classList.remove('dropdown-opcion-hover');
+});
+dropdown.appendChild(li);
             });
         }
     });
@@ -218,20 +207,7 @@ document.getElementById("iconoLogin").addEventListener("click", async e => {
 
 // Dropdown de usuario
 const dropdown = document.createElement('ul');
-dropdown.style.position = 'absolute';
-dropdown.style.top = '100%';
-dropdown.style.left = '-120px';
-dropdown.style.background = '#222';
-dropdown.style.color = '#fff';
-dropdown.style.padding = '0';
-dropdown.style.margin = '0';
-dropdown.style.borderRadius = '6px';
-dropdown.style.display = 'none';
-dropdown.style.listStyle = 'none';
-dropdown.style.minWidth = '120px';
-dropdown.style.zIndex = '9999';
-
-iconoLogin.style.position = 'relative';
+dropdown.classList.add('dropdown-menu');
 iconoLogin.appendChild(dropdown);
 
 let hideTimeout = null;
@@ -260,25 +236,14 @@ dropdown.addEventListener('mouseleave', () => {
 function crearOpcion(texto) {
     const li = document.createElement('li');
     li.textContent = texto;
-    li.style.padding = '0.2em 0.5em';
-    li.style.borderRadius = '4px';
-    li.style.fontSize = '1.1rem';
-    li.style.color = 'var(--color-white)';
-    li.style.fontFamily = "var(--font-main)";
-    li.style.cursor = 'pointer';
-    li.style.transition = 'color 0.2s, background 0.2s, text-decoration 0.2s';
+    li.classList.add('dropdown-opcion');
 
     li.addEventListener('mouseenter', () => {
-        li.style.color = 'var(--color-accent)';
-        li.style.background = 'rgba(255,102,20,0.08)';
-        li.style.textDecoration = 'underline';
-        li.style.textDecorationColor = 'var(--color-accent)';
+        li.classList.add('dropdown-opcion-hover');
     });
 
     li.addEventListener('mouseleave', () => {
-        li.style.color = 'var(--color-white)';
-        li.style.background = 'none';
-        li.style.textDecoration = 'none';
+        li.classList.remove('dropdown-opcion-hover');
     });
 
     return li;
