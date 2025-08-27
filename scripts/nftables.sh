@@ -1,8 +1,10 @@
 #!/bin/bash
 
-SETUP_SCRIPT="/usr/local/bin/nftables.sh"
+SETUP_SCRIPT="/usr/local/bin/scriptsProyecto/nftables.sh"
+DEST="/usr/local/bin/scriptsProyecto/"
 
 echo "Creando script $SETUP_SCRIPT..."
+mkdir -p "$DEST"
 
 sudo tee "$SETUP_SCRIPT" > /dev/null <<'EOF'
 #!/bin/bash
@@ -73,6 +75,7 @@ sudo chmod +x "$SETUP_SCRIPT"
 sudo chown root:root "$SETUP_SCRIPT"
 
 echo "Ejecutando la configuración de NFTables "
-/usr/local/bin/nftables.sh
+/usr/local/bin/scriptsProyecto/nftables.sh
 echo "Script $SETUP_SCRIPT creado y listo."
+
 
