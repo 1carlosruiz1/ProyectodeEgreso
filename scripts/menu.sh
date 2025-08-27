@@ -119,6 +119,7 @@ done
 EOF
 chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
 echo "Script instalado en $INSTALL_DIR/$SCRIPT_NAME con permisos de ejecución."
+chown root:root /usr/local/bin/scriptsProyecto/menu.sh
 
 echo "Gerente ALL=(ALL) NOPASSWD: $INSTALL_DIR/$SCRIPT_NAME" | sudo tee /etc/sudoers.d/menu_gerente
 sudo chmod 440 /etc/sudoers.d/menu_gerente
