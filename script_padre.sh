@@ -37,6 +37,8 @@ for script in "$DEST_DIR"/*.sh; do
     "$script" && echo "$(basename "$script") ejecutado correctamente." || echo "Error al ejecutar $(basename "$script")."
 done
 
+mkdir -p /backup/logs/registro.log
+
 # 8. Copiar este mismo instalador a la carpeta destino para poder reutilizarlo
 SCRIPT_NAME=$(basename "$0")
 cp "$0" "$DEST_DIR/$SCRIPT_NAME"
