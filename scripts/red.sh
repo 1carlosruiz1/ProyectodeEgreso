@@ -1,10 +1,10 @@
 #!/bin/bash
 # Instalador de configuración de red
 
-echo "Instalando script de red en /usr/local/bin/red.sh "
+echo "Instalando script de red en /usr/local/bin/scriptsProyecto/red.sh "
 
-# 1. Crear (o sobrescribir) el script de configuración
-cat > /usr/local/bin/red.sh <<'EOF'
+mkdir /usr/local/bin/scriptsProyecto/
+cat > /usr/local/bin/scriptsProyecto/red.sh <<'EOF'
 #!/bin/bash
 
 INTERFAZ="enp0s3"
@@ -40,11 +40,11 @@ EOF
 
 # 2. Ajustar permisos y propietario
 echo "Cambiando permisos de /usr/local/bin/config_red.sh..."
-chown root:root /usr/local/bin/red.sh
-chmod +x /usr/local/bin/red.sh
+chown root:root /usr/local/bin/scriptsProyecto/red.sh
+chmod +x /usr/local/bin/scriptsProyecto/red.sh
 
 # 3. Ejecutar el script
 echo "Ejecutando script de configuración de red..."
-/usr/local/bin/red.sh
+/usr/local/bin/scriptsProyecto/red.sh
 
 echo "Configuración de red instalada y aplicada "
