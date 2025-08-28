@@ -3,6 +3,7 @@ DEST="/usr/local/bin/scriptsProyecto/"
 
 mkdir -p "$DEST"
 
+# Crear el script
 cat <<'EOF' > "$SETUP_SCRIPT"
 #!/bin/bash
 
@@ -76,9 +77,24 @@ nft list ruleset
 echo "Configuración de nftables completada"
 EOF
 
+# Convertir a formato Unix
+if command -v dos2unix >/dev/null 2>&1; then
+    dos2unix "$SETUP_SCRIPT"
+else
+    # alternativa con sed
+    sed -i 's/\r$//' "$SETUP_SCRIPT"
+fi
+
+# Dar permisos
+chmod +x "$SETUP_SCRIPT"
+chown root:root "$SETUP_SCRIPT"
+
+
+
 # Dar permisos
 chmod +x "$SETUP_SCRIPT"
 chown root:root "$SETUP_SCRIPT"
 
 # Ejecutar
 "$SETUP_SCRIPT"
+
