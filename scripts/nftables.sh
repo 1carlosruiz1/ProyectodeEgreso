@@ -11,7 +11,7 @@ LOG_DIR="/backup/logs"
 mkdir -p "$LOG_DIR"
 
 LOG_FILE="$LOG_DIR/registro.log"
-exec >> "$LOG_FILE" 2>&1
+exec > >(tee -a "$LOG_FILE") 2>&1
 echo ""
 echo "=== [$0] Inicio de ejecución: $(date) ==="
 
@@ -97,5 +97,6 @@ chown root:root "$SETUP_SCRIPT"
 
 # Ejecutar
 "$SETUP_SCRIPT"
+
 
 
