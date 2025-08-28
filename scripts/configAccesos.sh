@@ -1,9 +1,9 @@
 #!/bin/bash
-INSTALL_DIR="/usr/local/bin/scriptsProyecto"
+INSTALL_DIR="/usr/local/bin/scriptsProyecto/"
 SCRIPT_NAME="configAccesos.sh.sh"
 
 echo "Creando script de instalación..."
-
+mkdir -p "$INSTALL_DIR"
 cat << 'EOF' > "$INSTALL_DIR/$SCRIPT_NAME"
 #!/bin/bash
 
@@ -17,22 +17,22 @@ echo "=== [$0] Inicio de ejecución: $(date) ==="
 
 MENU_PATH="/ruta/completa/a/menu.sh"
 
-# 1️⃣ Alias para Gerente
+#Alias para Gerente
 echo "alias menu='sudo $MENU_PATH'" >> /home/Gerente/.bashrc
 chown Gerente:Gerente /home/Gerente/.bashrc
 
-# 2️⃣ Crear wrapper log para todos los usuarios
+#Crear wrapper log para todos los usuarios
 cat << EOF > /usr/local/bin/log
 #!/bin/bash
 sudo $MENU_PATH 7
 EOF
 chmod +x /usr/local/bin/log
 
-# 3️⃣ Ajustar permisos de menu.sh
+#Ajustar permisos de menu.sh
 chown root:root "$MENU_PATH"
 chmod 700 "$MENU_PATH"
 
-# 4️⃣ Configurar sudoers para que todos puedan ejecutar menu.sh 7 sin contraseña
+#Configurar sudoers para que todos puedan ejecutar menu.sh 7 sin contraseña
 SUDOERS_FILE="/etc/sudoers.d/menu7"
 echo "ALL ALL=(root) NOPASSWD: $MENU_PATH 7" > "$SUDOERS_FILE"
 chmod 440 "$SUDOERS_FILE"
