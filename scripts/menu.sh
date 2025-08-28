@@ -58,15 +58,17 @@ while true; do
 				echo "2. Resetear configuraciones de nftables"
 				echo "3. Resetear configuraciones de red"
 				echo "4. Resetear sistema de backups automáticos"
-				echo "5. Volver"
+				echo "5. Resetear TODOS los scripts"
+				echo "6. Volver"
 				read -p "Escriba un número de opción: " opcionElejida2
 
 				case "$opcionElejida2" in
 					1) ssh.sh ;;
 					2) nftables.sh ;;	
 					3) red.sh ;;
-					4) scriptsInstalacion/backup.sh ;;
-					5) break ;;   # <- vuelve al menú principal
+					4) ../scriptsInstalacion/backup.sh ;;
+					5) ../scriptsInstalacion/script_padre.sh ;;
+					6) break ;;   
     				*) 
         				echo "Opción inválida"
         				read -p "Presione Enter para continuar"
