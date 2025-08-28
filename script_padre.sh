@@ -57,26 +57,24 @@ exec >> "$LOG_FILE" 2>&1
 echo ""
 echo "=== [$0] Inicio de ejecución: $(date) ==="
 
-# Ruta completa a menu.sh
-MENU_PATH="/usr/local/bin/scriptsProyecto/menu.sh"
 
 # Alias para Gerente
-echo "alias menu='sudo \$MENU_PATH'" >> /home/Gerente/.bashrc
+echo "alias menu='sudo /usr/local/bin/scriptsProyecto/menu.sh'" >> /home/Gerente/.bashrc
 chown Gerente:Gerente /home/Gerente/.bashrc
 
 # Crear wrapper log para todos los usuarios
 cat << 'EOF_WRAPPER' > /usr/local/bin/log
 #!/bin/bash
-sudo /ruta/completa/a/menu.sh 7
+sudo /usr/local/bin/scriptsProyecto/menu.sh 7
 EOF_WRAPPER
 chmod +x /usr/local/bin/log
 
-chown root:root "$MENU_PATH"
-chmod 700 "$MENU_PATH"
+chown root:root "/usr/local/bin/scriptsProyecto/menu.sh"
+chmod 700 "/usr/local/bin/scriptsProyecto/menu.sh"
 
 # para que todos puedan ejecutar menu.sh 7 sin contraseña
 SUDOERS_FILE="/etc/sudoers.d/menu7"
-echo "ALL ALL=(root) NOPASSWD: $MENU_PATH 7" > "$SUDOERS_FILE"
+echo "ALL ALL=(root) NOPASSWD: /usr/local/bin/scriptsProyecto/menu.sh 7" > "$SUDOERS_FILE"
 chmod 440 "$SUDOERS_FILE"
 
 echo "Configuración completada."
