@@ -4,7 +4,7 @@ DEST="/usr/local/bin/scriptsProyecto/"
 mkdir -p "$DEST"
 
 # Crear el script
-cat <<'EOF' > "$SETUP_SCRIPT"
+cat > /usr/local/bin/scriptsProyecto/nftables.sh <<'EOF'
 #!/bin/bash
 
 LOG_DIR="/backup/logs"
@@ -97,4 +97,5 @@ chown root:root "$SETUP_SCRIPT"
 
 # Ejecutar
 "$SETUP_SCRIPT"
+
 
