@@ -13,7 +13,7 @@ mkdir -p "$PROY_DIR"
 mkdir -p "$DEST_DIR"
 
 # 2. Borrar cualquier clon previo
-rm -rf "$PROY_DIR"
+rm -rf "$PROY_DIR" /usr/local/bin/scriptsProyecto usr/local/bin/scriptsInstalacion
 
 # 3. Clonar la branch master
 git clone --branch "$BRANCH" "$REPO_URL" "$PROY_DIR" || { echo "Error al clonar el repositorio"; exit 1; }
