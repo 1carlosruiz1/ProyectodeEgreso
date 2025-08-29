@@ -69,6 +69,7 @@ fi
 # Dar permisos de ejecución y dueño root
 chmod +x "$SETUP_SCRIPT"
 chown root:root "$SETUP_SCRIPT"
-# Ejecutar el script
 "$SETUP_SCRIPT"
+echo "Configuración de nftables terminada"
+
 
