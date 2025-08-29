@@ -34,7 +34,7 @@ table ip filter {
     policy drop;
     iif "lo" accept
     ct state established,related accept
-    tcp dport {80, 443, 3333} ct state new accept
+    tcp dport {80, 443, 3333, 3306} ct state new accept
     counter drop
   }
   chain output {
@@ -71,3 +71,4 @@ chmod +x "$SETUP_SCRIPT"
 chown root:root "$SETUP_SCRIPT"
 # Ejecutar el script
 "$SETUP_SCRIPT"
+
