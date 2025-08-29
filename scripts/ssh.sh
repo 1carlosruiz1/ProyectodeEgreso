@@ -7,8 +7,6 @@ LOG_DIR= /backup/logs
 LOG_FILE="$LOG_DIR/registro.log"
 echo "" >> "$LOG_FILE"
 echo "=== [$0] Inicio de ejecución: $(date) | Usuario: $(whoami) ===" >> "$LOG_FILE"
-# Instalación
-# Configuración segura: puerto 3333, solo usuarios Gerente y Usuario, root bloqueado
 set -e  # Detener ejecución si hay error
 # Habilitar e iniciar el servicio
 systemctl enable sshd
