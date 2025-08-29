@@ -51,6 +51,10 @@ while true; do
 			gestionBackups.sh
 			;;
 		5)
+  			LOG_FILE="$LOG_DIR/registro.log"
+			exec > >(tee -a "$LOG_FILE") 2>&1
+			echo ""
+			echo "=== [$0] Inicio de ejecución: $(date) | Usuario: $(whoami) ==="
 			while true; do
 				clear
 				echo "--- MENÚ DE RESTAURACIÓN ---"
