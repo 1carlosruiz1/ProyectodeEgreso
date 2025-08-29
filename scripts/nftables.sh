@@ -1,9 +1,10 @@
 #!/bin/bash
-SETUP_SCRIPT="/usr/local/bin/scriptsProyecto/nftables.sh"
+SETUP_SCRIPT="nftables.sh"
 DEST="/usr/local/bin/scriptsProyecto/"
 mkdir -p "$DEST"
-cat << 'EOF' > "$INSTALL_DIR/$SCRIPT_NAME"
+cat << 'EOF' > "$DEST/$SETUP_SCRIPT"
 #!/bin/bash
+LOG_DIR=/backup/logs
 LOG_FILE="$LOG_DIR/registro.log"
 echo "" >> "$LOG_FILE"
 echo "=== [$0] Inicio de ejecución: $(date) | Usuario: $(whoami) ===" >> "$LOG_FILE"
@@ -54,7 +55,7 @@ echo "Reglas cargadas actualmente:"
 nft list ruleset
 echo "Configuración de nftables completada"
 EOF
-chmod +x "$SETUP_SCRIPT"
-chown root:root "$SETUP_SCRIPT"
-"$SETUP_SCRIPT"
+chmod +x "$DEST/$SETUP_SCRIPT"
+chown root:root "$DEST/$SETUP_SCRIPT"
+"$DEST/$SETUP_SCRIPT"
 echo "Configuración de nftables terminada"
