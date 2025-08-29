@@ -3,6 +3,7 @@
 mkdir -p /usr/local/bin/scriptsProyecto/
 cat > /usr/local/bin/scriptsProyecto/ssh.sh <<'EOF'
 #!/bin/bash
+LOG_DIR= /backup/logs
 LOG_FILE="$LOG_DIR/registro.log"
 echo "" >> "$LOG_FILE"
 echo "=== [$0] Inicio de ejecución: $(date) | Usuario: $(whoami) ===" >> "$LOG_FILE"
