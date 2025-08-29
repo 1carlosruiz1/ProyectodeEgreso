@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
-
 LOG_DIR="/backup/logs"
 mkdir -p "$LOG_DIR"
-
 LOG_FILE="$LOG_DIR/registro.log"
 echo "" >> "$LOG_FILE"
 echo "=== [$0] Inicio de ejecución: $(date) | Usuario: $(whoami) ===" >> "$LOG_FILE"
-
 DEST_FULL="/backup/completos"
 DEST_INCR="/backup/incrementales"
 RESTORE_DIR="/opt/proyecto"
 DB_NAME="BDProyecto"
-
 mkdir -p "$DEST_FULL" "$DEST_INCR" "$RESTORE_DIR"
 
 while true; do
