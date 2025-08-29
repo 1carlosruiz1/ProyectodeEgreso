@@ -3,13 +3,10 @@
 mkdir -p /usr/local/bin/scriptsProyecto/
 cat > /usr/local/bin/scriptsProyecto/ssh.sh <<'EOF'
 #!/bin/bash
-LOG_DIR="/backup/logs"
-mkdir -p "$LOG_DIR"
 LOG_FILE="$LOG_DIR/registro.log"
-exec > >(tee -a "$LOG_FILE") 2>&1
-echo ""
-echo "=== [$0] Inicio de ejecución: $(date) ==="
-# Instalación y configuración automática de SSH en Rocky Linux
+echo "" >> "$LOG_FILE"
+echo "=== [$0] Inicio de ejecución: $(date) | Usuario: $(whoami) ===" >> "$LOG_FILE"
+# Instalación
 # Configuración segura: puerto 3333, solo usuarios Gerente y Usuario, root bloqueado
 set -e  # Detener ejecución si hay error
 # Habilitar e iniciar el servicio
