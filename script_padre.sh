@@ -34,7 +34,6 @@ chmod +x "$DEST_DIR"/*.sh
 
 # 7. Ejecutar todos los scripts copiados
 for script in "$DEST_DIR"/*.sh; do
-    echo "Ejecutando $(basename "$script")..."
     "$script" && echo "$(basename "$script") ejecutado correctamente." || echo "Error al ejecutar $(basename "$script")."
 done
 
