@@ -1,11 +1,8 @@
 #!/bin/bash
-# Instalador de configuración de red
-
-echo "Instalando script de red en /usr/local/bin/scriptsProyecto/red.sh "
-
 mkdir -p /usr/local/bin/scriptsProyecto/
 cat > /usr/local/bin/scriptsProyecto/red.sh <<'EOF'
 #!/bin/bash
+LOG_DIR=/backup/logs
 LOG_FILE="$LOG_DIR/registro.log"
 echo "" >> "$LOG_FILE"
 echo "=== [$0] Inicio de ejecución: $(date) | Usuario: $(whoami) ===" >> "$LOG_FILE"
