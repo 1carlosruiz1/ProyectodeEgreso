@@ -12,10 +12,8 @@ LOG_DIR="/backup/logs"
 mkdir -p "$LOG_DIR"
 
 LOG_FILE="$LOG_DIR/registro.log"
-exec > >(tee -a "$LOG_FILE") 2>&1
-echo ""
-echo "=== [$0] Inicio de ejecución: $(date) ==="
-
+echo "" >> "$LOG_FILE"
+echo "=== [$0] Inicio de ejecución: $(date) | Usuario: $(whoami) ===" >> "$LOG_FILE"
 
 while true; do
 	clear
@@ -51,10 +49,6 @@ while true; do
 			gestionBackups.sh
 			;;
 		5)
-  			LOG_FILE="$LOG_DIR/registro.log"
-			exec > >(tee -a "$LOG_FILE") 2>&1
-			echo ""
-			echo "=== [$0] Inicio de ejecución: $(date) | Usuario: $(whoami) ==="
 			while true; do
 				clear
 				echo "--- MENÚ DE RESTAURACIÓN ---"
