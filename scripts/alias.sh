@@ -12,7 +12,6 @@ alias verlog='less /backup/logs/registro.log'
 # Variable de entorno opcional para la ruta del log
 export LOG_PATH="/backup/logs/registro.log"
 EOF
-# Dar permisos de ejecución al script
 chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
 echo "Script de alias instalado en $INSTALL_DIR/$SCRIPT_NAME con permisos de ejecución."
 echo "Alias 'menu' y 'verlog' disponibles para todos los usuarios al iniciar sesión."
