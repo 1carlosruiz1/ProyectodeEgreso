@@ -4,13 +4,10 @@ SCRIPT_NAME="gestionUsuarios.sh"
 mkdir -p "$INSTALL_DIR"
 cat << 'EOF' > "$INSTALL_DIR/$SCRIPT_NAME"
 #!/usr/bin/env bash
-LOG_DIR="/backup/logs"
-mkdir -p "$LOG_DIR"
+LOG_DIR=/backup/logs
 LOG_FILE="$LOG_DIR/registro.log"
-exec > >(tee -a "$LOG_FILE") 2>&1
-echo ""
-echo "=== [$0] Inicio de ejecución: $(date) ==="
-
+echo "" >> "$LOG_FILE"
+echo "=== [$0] Inicio de ejecución: $(date) | Usuario: $(whoami) ===" >> "$LOG_FILE"
 while true; do
 	clear
 	echo "--- MENÚ DE USUARIOS ---"
