@@ -4,9 +4,8 @@ LOG_DIR="/backup/logs"
 mkdir -p "$LOG_DIR"
 
 LOG_FILE="$LOG_DIR/registro.log"
-exec > >(tee -a "$LOG_FILE") 2>&1
-echo ""
-echo "=== [$0] Inicio de ejecución: $(date) ==="
+echo "" >> "$LOG_FILE"
+echo "=== [$0] Inicio de ejecución: $(date) | Usuario: $(whoami) ===" >> "$LOG_FILE"
 
 DEST_FULL="/backup/completos"
 DEST_INCR="/backup/incrementales"
@@ -31,7 +30,9 @@ while true; do
             echo "1. Partición local"
             echo "2. Google Drive"
             read -rp "Número de opción: " origen
-
+            LOG_FILE="$LOG_DIR/registro.log"
+            echo "" >> "$LOG_FILE"
+            echo "=== [$0] Inicio de ejecución (restauracion de backup): $(date) | Usuario: $(whoami) ===" >> "$LOG_FILE"
             if [ "$origen" -eq 2 ]; then
                 rclone copy gdrive:backup/completos "$DEST_FULL" --progress
                 rclone copy gdrive:backup/incrementales "$DEST_INCR" --progress
