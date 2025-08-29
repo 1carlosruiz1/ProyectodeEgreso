@@ -44,9 +44,11 @@ while true; do
         	;;
     	3)
 			gestionUsuarios.sh
+   			read -p "Presione enter para continuar"
 			;;        	
         4)
-			gestionBackups.sh
+			gestionUsuarios.sh
+   			read -p "Presione enter para continuar"
 			;;
 		5)
 			while true; do
