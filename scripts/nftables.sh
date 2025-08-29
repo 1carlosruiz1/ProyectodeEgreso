@@ -54,11 +54,6 @@ echo "Reglas cargadas actualmente:"
 nft list ruleset
 echo "Configuración de nftables completada"
 EOF
-if command -v dos2unix >/dev/null 2>&1; then
-    dos2unix "$SETUP_SCRIPT"
-else
-    sed -i 's/\r$//' "$SETUP_SCRIPT"
-fi
 chmod +x "$SETUP_SCRIPT"
 chown root:root "$SETUP_SCRIPT"
 "$SETUP_SCRIPT"
