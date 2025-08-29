@@ -1,3 +1,7 @@
+#!/bin/bash
+INSTALL_DIR="/usr/local/bin/scriptsProyecto"
+SCRIPT_NAME="gestionBackups.sh"
+cat << 'EOF' > "$INSTALL_DIR/$SCRIPT_NAME"
 #!/usr/bin/env bash
 LOG_DIR="/backup/logs"
 mkdir -p "$LOG_DIR"
@@ -132,3 +136,6 @@ while true; do
             ;;
     esac
 done
+EOF
+chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
+echo "Script instalado en $INSTALL_DIR/$SCRIPT_NAME con permisos de ejecución."
