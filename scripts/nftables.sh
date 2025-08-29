@@ -53,7 +53,6 @@ nft -f /etc/nftables.conf
 # 7. Verificar
 echo "Reglas cargadas actualmente:"
 nft list ruleset
-echo "Configuración de nftables completada"
 EOF
 chmod +x "$DEST/$SETUP_SCRIPT"
 chown root:root "$DEST/$SETUP_SCRIPT"
