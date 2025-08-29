@@ -87,12 +87,11 @@ while true; do
             echo "2. Google Drive"
             read -rp "Opción: " origen
             read -rp "Indica la FECHA (YYYY-MM-DD): " fecha
-
-            if [ "$origen" -eq 2 ]; then
+            
+            if [ "$origen" = "2" ]; then
                 rclone copy gdrive:backup/completos "$DEST_FULL" --progress
                 rclone copy gdrive:backup/incrementales "$DEST_INCR" --progress
             fi
-
             dia=$(date -d "$fecha" +%A)
             if [ "$dia" = "Sunday" ]; then
                 archivo_files="$DEST_FULL/files-$fecha.tar.gz"
@@ -103,25 +102,22 @@ while true; do
                     echo "No se encontró backup completo del $fecha."
                 fi
             else
-                # Último domingo
                 ultimo_domingo=$(date -d "$fecha -$(( $(date -d "$fecha" +%u) % 7 )) days" +%Y-%m-%d)
                 archivo_completo="$DEST_FULL/files-$ultimo_domingo.tar.gz"
+            
                 if [ -f "$archivo_completo" ]; then
                     echo "Restaurando desde el completo del domingo $ultimo_domingo..."
                     tar -xzf "$archivo_completo" -C /
                 else
                     echo "No se encontró backup completo del domingo $ultimo_domingo."
                 fi
-
-                echo "Aplicando incrementales hasta $fecha..."
-                # Obtener lista de incrementales entre ultimo_domingo y fecha
-                for incr in $(ls -1 "$DEST_INCR" | sort); do
-                    # Cada incremental es un directorio con fecha
+                echo "Aplicando incrementales hasta $fecha"
+                while IFS= read -r incr; do
                     if [[ "$incr" > "$ultimo_domingo" && "$incr" <= "$fecha" ]]; then
                         rsync -a "$DEST_INCR/$incr/" /
                         echo "Incremental $incr aplicado."
                     fi
-                done
+                done < <(find "$DEST_INCR" -mindepth 1 -maxdepth 1 -type d -printf "%f\n" | sort)     
                 echo "Archivos restaurados hasta el $fecha."
             fi
             read -p "Presione Enter para continuar."
