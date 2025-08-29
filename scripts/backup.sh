@@ -71,23 +71,24 @@ if [ "$day" = "Sunday" ]; then
         echo "Backup del $old_date eliminado (local + Drive)."
     fi
 fi
-
 if [ "$day" != "Sunday" ]; then
-    file_incr="$dest_incr/files_incremental-$fecha.tar.gz"
-    db_incr="$dest_incr/mysql_incremental-$fecha.sql.gz"
-    snapshot="$dest_incr/proyecto.snar"
-
-    tar --listed-incremental="$snapshot" -czf "$file_incr" "$backup_files"
+    incr_dir="$dest_incr/$fecha"
+    mkdir -p "$incr_dir"
+    # Incremental usando rsync
+    # --link-dest apunta al último completo
+    ultimo_full=$(ls -1 "$dest_full"/files-*.tar.gz | sort | tail -n 1)
+    # Si quieres mantenerlo como copia descomprimida:
+    rsync -a --link-dest="$backup_files" "$backup_files/" "$incr_dir/"
     echo "Backup incremental de la web en disco finalizado"
     date
-
+    # Backup de BD sigue igual
+    db_incr="$dest_incr/mysql_incremental-$fecha.sql.gz"
     mysqldump --defaults-extra-file=/root/.my.cnf --skip-comments --add-drop-table --databases "$backup_db" \
         | gzip -9 > "$db_incr"
     echo "Backup de la BD en disco finalizado"
     date
-
-    /usr/local/bin/rclone copy "$file_incr" gdrive:backup/incrementales
-    /usr/local/bin/rclone copy "$db_incr" gdrive:backup/incrementales
+    rclone copy "$incr_dir" gdrive:backup/incrementales
+    rclone copy "$db_incr" gdrive:backup/incrementales
     echo "Backup incremental subido a Drive"
     date
 fi
