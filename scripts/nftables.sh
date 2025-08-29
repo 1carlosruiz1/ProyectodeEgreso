@@ -3,10 +3,8 @@
 SETUP_SCRIPT="/usr/local/bin/scriptsProyecto/nftables.sh"
 DEST="/usr/local/bin/scriptsProyecto/"
 
-# Crear carpeta de scripts
 mkdir -p "$DEST"
 
-# Crear el script nftables.sh
 cat > "$SETUP_SCRIPT" <<'EOF'
 #!/bin/bash
 
@@ -60,13 +58,11 @@ echo "Reglas cargadas actualmente:"
 nft list ruleset
 echo "Configuración de nftables completada"
 EOF
-# Convertir a formato Unix (por si acaso)
 if command -v dos2unix >/dev/null 2>&1; then
     dos2unix "$SETUP_SCRIPT"
 else
     sed -i 's/\r$//' "$SETUP_SCRIPT"
 fi
-# Dar permisos de ejecución y dueño root
 chmod +x "$SETUP_SCRIPT"
 chown root:root "$SETUP_SCRIPT"
 "$SETUP_SCRIPT"
