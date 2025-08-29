@@ -1,13 +1,9 @@
 #!/bin/bash
-
 SETUP_SCRIPT="/usr/local/bin/scriptsProyecto/nftables.sh"
 DEST="/usr/local/bin/scriptsProyecto/"
-
 mkdir -p "$DEST"
-
-cat > "$SETUP_SCRIPT" <<'EOF'
+cat << 'EOF' > "$INSTALL_DIR/$SCRIPT_NAME"
 #!/bin/bash
-
 LOG_FILE="$LOG_DIR/registro.log"
 echo "" >> "$LOG_FILE"
 echo "=== [$0] Inicio de ejecución: $(date) | Usuario: $(whoami) ===" >> "$LOG_FILE"
