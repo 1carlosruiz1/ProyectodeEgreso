@@ -158,6 +158,7 @@ while true; do
 			echo "INCREMENTALES"
 			echo ""
 			ls -r /backup/incrementales
+   			;;
     6)
         echo "Saliendo"
         exit 0
