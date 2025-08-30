@@ -49,28 +49,31 @@ while true; do
                 read -p "Presione enter para continuar"
                 ;;
         5)
-          	while true; do
-                        clear
-                        echo "--- MENÚ DE RESTAURACIÓN ---"
-                        echo "1. Resetear configuraciones de ssh"
-                        echo "2. Resetear configuraciones de nftables"
-                        echo "3. Resetear configuraciones de red"
-                        echo "4. Resetear sistema de backups automáticos"
-                        echo "5. Resetear TODOS los scripts y configuraciones de fabrica"
-                        echo "6. Volver"
-                        read -p "Escriba un número de opción: " opcionElejida2
-
-                                case "$opcionElejida2" in
-                                        1) $DIR_SCRIPTS/ssh.sh ;;
-                                        2) $DIR_SCRIPTS/nftables.sh ;;
-                                        3) $DIR_SCRIPTS/red.sh ;;
-                                        4) DIR_RESTAURACION/backup.sh ;;
-                                        5) DIR_RESTAURACION/script_padre.sh ;;
-                                        6) break ;;
-                                *)
-                                  	echo "Opción inválida"
-                                        read -p "Presione Enter para continuar"
-                                        ;;
+  			while true; do
+	        clear
+	        echo "--- MENÚ DE RESTAURACIÓN ---"
+	        echo "1. Resetear configuraciones de ssh"
+	        echo "2. Resetear configuraciones de nftables"
+	        echo "3. Resetear configuraciones de red"
+	        echo "4. Resetear sistema de backups automáticos"
+	        echo "5. Resetear TODOS los scripts y configuraciones de fabrica"
+	        echo "6. Volver"
+	        read -p "Escriba un número de opción: " opcionElejida2
+	
+	        case "$opcionElejida2" in
+	            1) $DIR_SCRIPTS/ssh.sh ;;
+	            2) $DIR_SCRIPTS/nftables.sh ;;
+	            3) $DIR_SCRIPTS/red.sh ;;
+	            4) $DIR_RESTAURACION/backup.sh ;;
+	            5) $DIR_RESTAURACION/script_padre.sh ;;
+	            6) break ;;
+	            *)
+	                echo "Opción inválida"
+                read -p "Presione Enter para continuar"
+                ;;
+        esac
+    done
+    ;;
         6)
           	echo "=== CONFIGURACIONES ACTIVAS ==="
                 echo ""
