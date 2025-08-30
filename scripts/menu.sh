@@ -5,8 +5,7 @@ SCRIPT_NAME="menu.sh"
 
 echo "Creando script de instalación."
 mkdir -p "$INSTALL_DIR"
-cat << 'EOF' > "$INSTALL_DIR/$SCRIPT_NAME"
-  GNU nano 8.1                                              /usr/local/bin/scriptsProyecto/menu.sh                                                           
+cat << 'EOF' > "$INSTALL_DIR/$SCRIPT_NAME"                                                                                          
 #!/usr/bin/env bash
 LOG_DIR="/backup/logs"
 mkdir -p "LOG_DIR"
@@ -14,6 +13,7 @@ LOG_FILE="$LOG_DIR/registro.log"
 echo "" >> "$LOG_FILE"
 echo "=== [$0] Inicio de ejecución: $(date) | Usuario: $(whoami) ===" >> "$LOG_FILE"
 DIR_SCRIPTS="/usr/local/bin/scriptsProyecto"
+DIR_RESTAURACION="/usr/local/bin/scriptsInstalacion"
 while true; do
 	clear
 	echo "--- MENÚ DE ADMINISTRACIÓN ---"
