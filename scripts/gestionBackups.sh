@@ -30,7 +30,8 @@ while true; do
     echo "2. Restaurar solo la base de datos"
     echo "3. Restaurar solo archivos/programa"
     echo "4. Realizar backup completo manual"
-    echo "5. Salir"
+	echo "5. Ver listado de backups realizados"
+    echo "6. Salir"
     read -rp "Escriba un número de opción: " opcion
     case "$opcion" in
         1)
@@ -135,14 +136,36 @@ while true; do
             /usr/local/bin/scriptsProyecto/backup.sh Sunday
             read -p "Presione Enter para continuar."
             ;;
-        5)
-            echo "Saliendo"
-            exit 0
+		5)	
+			clear
+			echo "BACKUPS REALIZADOS DE DRIVE: "
+			echo "COMPLETOS"
+			echo ""
+			rclone ls gdrive:backup/completos
+			echo ""
+
+			echo "INCREMENTALES"
+			echo ""
+			rclone ls gdrive:backup/incrementales
+			echo ""
+
+			echo "BACKUPS REALIZADOS EN LA PARTICIÓN DEDICADA"
+			echo "COMPLETOS"
+			echo ""
+			ls -r /backup/completos
+			echo ""
+
+			echo "INCREMENTALES"
+			echo ""
+			ls -r /backup/incrementales
+    6)
+        echo "Saliendo"
+        exit 0
             ;;
-        *)
-            echo "Opción inválida."
-            read -p "Presione Enter para continuar."
-            ;;
+      *)
+        echo "Opción inválida."
+        read -p "Presione Enter para continuar."
+          ;;
     esac
 done
 EOF
