@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTALL_DIR="/usr/local/bin/scriptsProyecto/"
+INSTALL_DIR="/usr/local/bin/scriptsProyecto"
 SCRIPT_NAME="menu.sh"
 
 echo "Creando script de instalación."
