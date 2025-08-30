@@ -141,12 +141,12 @@ while true; do
 			echo "BACKUPS REALIZADOS DE DRIVE: "
 			echo "COMPLETOS"
 			echo ""
-			rclone ls gdrive:backup/completos
+			/usr/bin/rclone ls gdrive:backup/completos
 			echo ""
 
 			echo "INCREMENTALES"
 			echo ""
-			rclone ls gdrive:backup/incrementales
+			/usr/bin/rclone ls gdrive:backup/incrementales
 			echo ""
 
 			echo "BACKUPS REALIZADOS EN LA PARTICIÓN DEDICADA"
@@ -159,9 +159,9 @@ while true; do
 			echo ""
 			ls -r /backup/incrementales
    			;;
-    6)
-        echo "Saliendo"
-        exit 0
+  	  6)
+     	   echo "Saliendo"
+     	   exit 0
             ;;
       *)
         echo "Opción inválida."
