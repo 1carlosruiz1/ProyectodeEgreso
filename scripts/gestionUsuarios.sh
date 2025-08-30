@@ -58,8 +58,10 @@ while true; do
                 echo "$nombreUsuario ALL=(ALL) NOPASSWD: /usr/local/bin/menu.sh" | sudo tee /etc/sudoers.d/$nombreUsuario
                 chmod 440 /etc/sudoers.d/$nombreUsuario
                 echo "Usuario $nombreUsuario agregado a sudoers para ejecutar menu.sh sin contraseña."
+				read -p "Presione enter para continuar"
             else
                 echo "El usuario $nombreUsuario no existe."
+				read -p "Presione enter para continuar"
             fi
             ;;
         5)
