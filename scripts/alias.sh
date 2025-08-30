@@ -13,6 +13,8 @@ alias verlog='less /backup/logs/registro.log'
 export LOG_PATH="/backup/logs/registro.log"
 EOF
 chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
+sudo truncate -s 0 /backup/logs/registro.log
 sudo chmod 644 /backup/logs/registro.log
+sudo chmod 644 /backup/logs
 echo "Script de alias instalado en $INSTALL_DIR/$SCRIPT_NAME con permisos de ejecución."
 echo "Alias 'menu' y 'verlog' disponibles para todos los usuarios al iniciar sesión."
