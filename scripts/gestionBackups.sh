@@ -141,12 +141,12 @@ while true; do
 			echo "BACKUPS REALIZADOS DE DRIVE: "
 			echo "COMPLETOS"
 			echo ""
-			/usr/bin/rclone ls gdrive:backup/completos
+			/usr/local/bin/rclone ls gdrive:backup/completos
 			echo ""
 
 			echo "INCREMENTALES"
 			echo ""
-			/usr/bin/rclone ls gdrive:backup/incrementales
+			/usr/local/bin/rclone ls gdrive:backup/incrementales
 			echo ""
 
 			echo "BACKUPS REALIZADOS EN LA PARTICIÓN DEDICADA"
