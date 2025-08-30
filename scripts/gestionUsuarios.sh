@@ -30,9 +30,9 @@ while true; do
             passwd $nombreUsuario
             ;;
     	2)
-	 	LOG_FILE="$LOG_DIR/registro.log"
-		echo "" >> "$LOG_FILE"
-		echo "=== [$0] Inicio de ejecución (cambio de ocntraseña de usuario): $(date) | Usuario: $(whoami) ===" >> "$LOG_FILE"
+	 		LOG_FILE="$LOG_DIR/registro.log"
+			echo "" >> "$LOG_FILE"
+			echo "=== [$0] Inicio de ejecución (cambio de contraseña de usuario): $(date) | Usuario: $(whoami) ===" >> "$LOG_FILE"
         	read -p "Escriba el nombre del usuario: " nombreUsuario
             if id "$nombreUsuario" &>/dev/null; then
                 passwd $nombreUsuario
