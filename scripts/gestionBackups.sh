@@ -152,12 +152,12 @@ while true; do
 			echo "BACKUPS REALIZADOS EN LA PARTICIÓN DEDICADA"
 			echo "COMPLETOS"
 			echo ""
-			ls -r /backup/completos
+			ls -R /backup/completos
 			echo ""
 
 			echo "INCREMENTALES"
 			echo ""
-			ls -r /backup/incrementales
+			ls -R /backup/incrementales
    			;;
   	  6)
      	   echo "Saliendo"
