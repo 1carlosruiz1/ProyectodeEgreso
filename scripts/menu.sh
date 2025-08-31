@@ -73,7 +73,7 @@ while true; do
 	            4) $DIR_RESTAURACION/backup.sh
 			 		read -p "Presione enter para continuar"
 	  				;;
-	            5) $DIR_RESTAURACION/script_padre.sh
+	            5) /usr/local/bin/script_padre.sh
 			 		read -p "Presione enter para continuar"
 	  				;;
 	            6) break ;;
