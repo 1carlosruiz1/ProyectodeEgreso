@@ -1,22 +1,31 @@
 #!/bin/bash
-INSTALL_DIR="/etc/profile.d/"
-SCRIPT_NAME="log_access.sh"
-
-echo "Creando script de registro de accesos..."
-
-cat << 'EOF' > "$INSTALL_DIR/$SCRIPT_NAME"
+LOG_DIR="/var/log/login_access"
+LOG_FILE="$LOG_DIR/registro.log"
+SCRIPT_PAM="/usr/local/bin/log_access.sh"
+echo "Creando script de registro de accesos (PAM)..."
+cat << 'EOF' > "$SCRIPT_PAM"
 #!/bin/bash
 LOG_DIR="/var/log/login_access"
 mkdir -p "$LOG_DIR"
-chmod 700 "$LOG_DIR"
+chmod 755 "$LOG_DIR"
 LOG_FILE="$LOG_DIR/registro.log"
 touch "$LOG_FILE"
-chmod 600 "$LOG_FILE"
+chmod 644 "$LOG_FILE"
 REMOTE="${PAM_RHOST:-local}"
 USER="$PAM_USER"
-echo "Usuario $USER accedió desde $REMOTE el $(date)" >> "$LOG_FILE"
-
+UID_NUM=$(id -u "$USER")
+if [ "$UID_NUM" -ge 1000 ] || [ "$UID_NUM" -eq 0 ]; then
+    echo "Usuario $USER accedió desde $REMOTE el $(date)" >> "$LOG_FILE"
+fi
 EOF
-chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
-session optional pam_exec.so /usr/local/bin/log_access.sh
-echo "Script instalado en $INSTALL_DIR/$SCRIPT_NAME con permisos de ejecución."
+chmod +x "$SCRIPT_PAM"
+PAM_FILES=("/etc/pam.d/sshd" "/etc/pam.d/login")
+
+for f in "${PAM_FILES[@]}"; do
+    # Verificar si ya existe la línea
+    if ! grep -q "$SCRIPT_PAM" "$f"; then
+        echo "session optional pam_exec.so $SCRIPT_PAM" >> "$f"
+        echo "Línea agregada a $f en $f"
+    fi
+done
+echo "Instalación completa. PAM configurado para registrar accesos de usuarios."
