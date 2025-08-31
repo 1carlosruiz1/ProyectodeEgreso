@@ -81,12 +81,15 @@ while true; do
             fi
             ;;
         6)
-			awk -F: '$3 >= 1000 {print $1}' /etc/passwd | while read usuario; do
+			# Listar root + usuarios normales (UID 0 o >= 1000)
+			awk -F: '$3==0 || $3>=1000 {print $1}' /etc/passwd | while read usuario; do
 			    acceso="Sin acceso al menú"
-			    if grep -q "^$usuario " /etc/sudoers 2>/dev/null; then
+			    # Revisar /etc/sudoers
+			    if sudo grep -qE "^\s*$usuario\b" /etc/sudoers 2>/dev/null; then
 			        acceso="Tiene acceso al menú"
 			    fi
-			    if grep -rq "^$usuario " /etc/sudoers.d/ 2>/dev/null; then
+			    # Revisar todos los archivos en /etc/sudoers.d/
+			    if sudo grep -qrE "^\s*$usuario\b" /etc/sudoers.d/ 2>/dev/null; then
 			        acceso="Tiene acceso al menú"
 			    fi
 			    echo "$usuario -> $acceso"
