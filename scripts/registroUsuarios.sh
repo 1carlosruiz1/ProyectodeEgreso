@@ -5,7 +5,7 @@ SCRIPT_PAM="/usr/local/bin/scriptsProyecto/registroUsuarios.sh"
 echo "Creando script de registro de accesos (PAM)."
 cat << 'EOF' > "$SCRIPT_PAM"
 #!/bin/bash
-LOG_DIR="/var/log/login_access"
+LOG_DIR="/backup/logs"
 mkdir -p "$LOG_DIR"
 chmod 755 "$LOG_DIR"
 LOG_FILE="$LOG_DIR/registro.log"
