@@ -28,6 +28,7 @@ while true; do
         	read -p "Escriba el nombre del nuevo usuario: " nombreUsuario
         	useradd -m $nombreUsuario
             passwd $nombreUsuario
+			read -p "Usuario creado exitosamente, presione enter para continuar" 
             ;;
     	2)
 	 		LOG_FILE="$LOG_DIR/registro.log"
@@ -36,8 +37,10 @@ while true; do
         	read -p "Escriba el nombre del usuario: " nombreUsuario
             if id "$nombreUsuario" &>/dev/null; then
                 passwd $nombreUsuario
+				read -p "Contraseña cambiada, presione enter para continuar"
             else
                 echo "El usuario $nombreUsuario no existe."
+			read -p "Presione enter para continuar"
             fi
             ;;
     	3)
@@ -48,8 +51,10 @@ while true; do
             if id "$nombreUsuario" &>/dev/null; then
                 userdel -r "$nombreUsuario"
                 echo "Usuario $nombreUsuario eliminado."
+				read -p "Presione enter para continuar"
             else
                 echo "El usuario $nombreUsuario no existe."
+				read -p "Presione enter para continuar"
             fi
             ;;
         4)
@@ -69,8 +74,10 @@ while true; do
             if [ -f /etc/sudoers.d/$nombreUsuario ]; then
                 rm -f /etc/sudoers.d/$nombreUsuario
                 echo "Regla sudoers de $nombreUsuario eliminada."
+				read -p "Presione enter para continuar"
             else
                 echo "El usuario $nombreUsuario no tiene regla sudoers."
+				read -p "Presione enter para continuar"
             fi
             ;;
         6)
