@@ -1,5 +1,5 @@
 #!/bin/bash
-LOG_DIR="/var/log/login_access"
+LOG_DIR="/backup/logs"
 LOG_FILE="$LOG_DIR/registro.log"
 SCRIPT_PAM="/usr/local/bin/log_access.sh"
 echo "Creando script de registro de accesos (PAM)..."
