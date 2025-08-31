@@ -19,7 +19,7 @@ validar_fecha() {
 descargar_backups() {
   local tipo=$1
   if [ "$origen" -eq 2 ]; then
-    rclone copy "gdrive:backup/$tipo" "/backup/$tipo" --progress
+    /usr/local/bin/rclone copy "gdrive:backup/$tipo" "/backup/$tipo" --progress
   fi
 }
 
