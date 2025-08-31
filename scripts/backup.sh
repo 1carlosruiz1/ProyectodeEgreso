@@ -1,6 +1,6 @@
 #!/bin/bash
 BACKUP_SCRIPT="/usr/local/bin/scriptsProyecto/backup.sh"
-DEST_BACKUP="/usr/local/bin/scriptsProyecto/"
+DEST_BACKUP="/usr/local/bin/scriptsProyecto"
 DEST_FULL="/backup/completos"
 DEST_INCR="/backup/incrementales"
 mkdir -p "$DEST_FULL" "$DEST_INCR" "$DEST_BACKUP"
