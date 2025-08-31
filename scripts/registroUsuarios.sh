@@ -1,8 +1,8 @@
 #!/bin/bash
 LOG_DIR="/backup/logs"
 LOG_FILE="$LOG_DIR/registro.log"
-SCRIPT_PAM="/usr/local/bin/log_access.sh"
-echo "Creando script de registro de accesos (PAM)..."
+SCRIPT_PAM="/usr/local/bin/scriptsProyecto/registroUsuarios.sh"
+echo "Creando script de registro de accesos (PAM)."
 cat << 'EOF' > "$SCRIPT_PAM"
 #!/bin/bash
 LOG_DIR="/var/log/login_access"
