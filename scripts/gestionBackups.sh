@@ -28,7 +28,7 @@ while true; do
     echo "--- MENÚ DE BACKUP Y RESTAURACIÓN ---"
     echo "1. Restauración completa (archivos + BD)"
     echo "2. Restaurar solo la base de datos"
-    echo "3. Restaurar solo archivos/programa"
+    echo "3. Restaurar solo archivos del programa web"
     echo "4. Realizar backup completo manual"
 	echo "5. Ver listado de backups realizados"
     echo "6. Salir"
@@ -47,16 +47,20 @@ while true; do
             if [ -f "$ultimo_full" ]; then
                 tar -xzf "$ultimo_full" -C /
                 echo "Archivos restaurados."
+				read -p "Presione enter para continuar"
             else
                 echo "No se encontró backup completo de archivos."
+				read -p "Presione enter para continuar"
             fi
             echo "Restaurando base de datos..."
             ultimo_db=$(ls -1 "$DEST_FULL"/mysql-*.sql.gz 2>/dev/null | sort | tail -n 1)
             if [ -f "$ultimo_db" ]; then
                 gunzip -c "$ultimo_db" | mysql "$DB_NAME"
                 echo "Base de datos restaurada."
+				read -p "Presione enter para continuar"
             else
                 echo "No se encontró backup de base de datos."
+				read -p "Presione enter para continuar"
             fi
             echo "Restauración COMPLETA finalizada."
             read -p "Presione Enter para continuar."
@@ -82,6 +86,7 @@ while true; do
             if [ -f "$archivo_db" ]; then
                 gunzip -c "$archivo_db" | mysql "$DB_NAME"
                 echo "Base de datos restaurada desde $archivo_db."
+				
             else
                 echo "No se encontró backup de BD para esa fecha."
             fi
@@ -107,8 +112,10 @@ while true; do
                 if [ -f "$archivo_files" ]; then
                     tar -xzf "$archivo_files" -C /
                     echo "Archivos restaurados desde backup completo."
+					read -p "Presione Enter para continuar."
                 else
                     echo "No se encontró backup completo del $fecha."
+					read -p "Presione Enter para continuar."
                 fi
             else
                 ultimo_domingo=$(date -d "$fecha -$(( dia_num % 7 )) days" +%Y-%m-%d)
@@ -117,20 +124,23 @@ while true; do
                 if [ -f "$archivo_completo" ]; then
                     echo "Restaurando desde el completo del domingo $ultimo_domingo..."
                     tar -xzf "$archivo_completo" -C /
+					read -p "Presione Enter para continuar."
                 else
                     echo "No se encontró backup completo del domingo $ultimo_domingo."
+					read -p "Presione Enter para continuar."
                 fi
 
-                echo "Aplicando incrementales hasta $fecha..."
+                echo "Aplicando incrementales hasta $fecha."
                 while IFS= read -r incr; do
                     if [[ "$incr" > "$ultimo_domingo" && ( "$incr" < "$fecha" || "$incr" == "$fecha" ) ]]; then
                         rsync -a "$DEST_INCR/$incr/" /
                         echo "Incremental $incr aplicado."
+						read -p "Presione Enter para continuar."
                     fi
                 done < <(find "$DEST_INCR" -mindepth 1 -maxdepth 1 -type d -printf "%f\n" | sort)
                 echo "Archivos restaurados hasta el $fecha."
+				read -p "Presione Enter para continuar."
             fi
-            read -p "Presione Enter para continuar."
             ;;
         4)
             /usr/local/bin/scriptsProyecto/backup.sh Sunday
@@ -158,6 +168,7 @@ while true; do
 			echo "INCREMENTALES"
 			echo ""
 			ls -R /backup/incrementales
+   			read -p "Presione Enter para continuar."
    			;;
   	  6)
      	   echo "Saliendo"
