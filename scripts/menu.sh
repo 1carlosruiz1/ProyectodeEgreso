@@ -61,16 +61,21 @@ while true; do
 	        read -p "Escriba un número de opción: " opcionElejida2
 	
 	        case "$opcionElejida2" in
-	            1) $DIR_SCRIPTS/ssh.sh ;;
+	            1) $DIR_SCRIPTS/ssh.sh
 			 		read -p "Presione enter para continuar"
-	            2) $DIR_SCRIPTS/nftables.sh ;;
+	  				;;
+	            2) $DIR_SCRIPTS/nftables.sh
 			 		read -p "Presione enter para continuar"
-	            3) $DIR_SCRIPTS/red.sh ;;
+	  				;;
+	            3) $DIR_SCRIPTS/red.sh
 			 		read -p "Presione enter para continuar"
-	            4) $DIR_RESTAURACION/backup.sh ;;
+	  				;;
+	            4) $DIR_RESTAURACION/backup.sh
 			 		read -p "Presione enter para continuar"
-	            5) $DIR_RESTAURACION/script_padre.sh ;;
+	  				;;
+	            5) $DIR_RESTAURACION/script_padre.sh
 			 		read -p "Presione enter para continuar"
+	  				;;
 	            6) break ;;
 	            *)
 	                echo "Opción inválida"
