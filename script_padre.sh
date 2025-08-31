@@ -31,7 +31,7 @@ for script in "$DEST_DIR"/*.sh; do
 done
 # 8. Copiar este instalador a DEST_DIR
 SCRIPT_NAME=$(basename "$0")
-cp "$0" "$DEST_DIR/$SCRIPT_NAME"
-chmod +x "$DEST_DIR/$SCRIPT_NAME"
+cp "$0" "/usr/local/bin/$SCRIPT_NAME"
+chmod +x "/usr/local/bin/$SCRIPT_NAME"
 # 9. Borrar el repositorio clonado
 rm -rf "$PROY_DIR"
