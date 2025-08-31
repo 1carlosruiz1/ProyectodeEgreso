@@ -82,15 +82,17 @@ while true; do
             ;;
         6)
 			awk -F: '$3 >= 1000 {print $1}' /etc/passwd | while read usuario; do
-			    if grep -q "^$usuario " /etc/sudoers 2>/dev/null || [ -f /etc/sudoers.d/$usuario ]; then
-			        echo "$usuario -> Tiene acceso al menú"
-			    else
-			        echo "$usuario -> Sin acceso al menú"
+			    acceso="Sin acceso al menú"
+			    if grep -q "^$usuario " /etc/sudoers 2>/dev/null; then
+			        acceso="Tiene acceso al menú"
 			    fi
+			    if grep -rq "^$usuario " /etc/sudoers.d/ 2>/dev/null; then
+			        acceso="Tiene acceso al menú"
+			    fi
+			    echo "$usuario -> $acceso"
 			done
 			read -p "Presione Enter para volver"
 			;;
-
         7)
             echo "Saliendo."
         	exit
