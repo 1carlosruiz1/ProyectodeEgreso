@@ -1,0 +1,49 @@
+.card-reserva {
+  background-color: var(--color-header);
+  border: 2px solid var(--color-accent);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px var(--color-shadow);
+  padding: 30px;
+  margin: 30px auto;
+  max-width: 600px;
+  color: var(--color-white);
+  font-family: var(--font-main);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-size: 18px;
+}
+
+.card-reserva::before {
+  content: "📅 Reserva";
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-family: var(--font-title);
+  font-size: 28px;
+  color: var(--color-accent);
+  background-color: var(--color-header);
+  padding: 0 10px;
+}
+
+.card-reserva:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(255, 102, 20, 0.2);
+  border-color: var(--color-accent-dark);
+}
+
+.card-reserva p {
+  margin: 0;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.card-reserva p span {
+  color: var(--color-white);
+  font-weight: bold;
+}
+h2{
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
