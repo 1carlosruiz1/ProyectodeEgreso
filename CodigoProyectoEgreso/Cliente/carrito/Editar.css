@@ -1,0 +1,171 @@
+.edicion-plato-card {
+    display: flex;
+    gap: 2.5vw;
+    align-items: flex-start;
+    margin: 3vh auto 2rem auto;
+    background: var(--color-header);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #0003;
+    padding: 2.5vw 2vw;
+    max-width: 600px;
+    min-width: 320px;
+}
+
+.edicion-plato-img img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 2px 12px #0003;
+    background: #fff1;
+    display: block;
+}
+
+.edicion-plato-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    justify-content: flex-start;
+}
+
+.edicion-plato-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5vw;
+    margin-bottom: 1rem;
+    border-bottom: 1.5px solid var(--color-accent);
+    padding-bottom: 0.7rem;
+}
+
+.edicion-plato-nombre {
+    font-family: var(--font-title);
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    margin-right: 1vw;
+    letter-spacing: 1px;
+}
+
+.edicion-plato-precio {
+    color: var(--color-white);
+    font-size: 1.2rem;
+    font-family: var(--font-main);
+    background: var(--color-accent);
+    border-radius: 8px;
+    padding: 0.2em 1em;
+    margin-left: 1vw;
+    font-weight: 600;
+    box-shadow: 0 2px 8px #0002;
+}
+
+.ingredientes-section label {
+    color: var(--color-white);
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+.ingredientes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ingredientes-list li {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 0.7rem;
+    background: #181818;
+    border-radius: 8px;
+    padding: 0.5em 1em;
+    box-shadow: 0 2px 8px #0002;
+    transition: box-shadow 0.2s;
+}
+
+.ingrediente-nombre {
+    flex: 1;
+    font-size: 1.1rem;
+    color: var(--color-white);
+    font-family: var(--font-main);
+    letter-spacing: 0.5px;
+}
+
+.ingrediente-controles {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.ingrediente-cantidad {
+    width: 2em;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    font-weight: bold;
+    font-family: var(--font-main);
+    background: #222;
+    border-radius: 6px;
+    padding: 0.1em 0.5em;
+    margin: 0 0.2em;
+    border: 1px solid var(--color-accent);
+}
+
+.btn-ingrediente {
+    background: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    border-radius: 6px;
+    width: 2em;
+    height: 2em;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #0002;
+}
+
+.guardar{
+    background: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    border-radius: 6px;
+    width: 9vw;
+    height: auto;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #0002;
+}
+
+.btn-ingrediente:hover {
+    background: var(--color-accent-dark);
+    transform: scale(1.08);
+}
+
+@media (max-width: 900px) {
+    .edicion-plato-card {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 4vw 2vw;
+        width: 98vw;
+        min-width: unset;
+        max-width: 98vw;
+    }
+    .edicion-plato-img img {
+        width: 90vw;
+        max-width: 220px;
+        height: auto;
+    }
+}
