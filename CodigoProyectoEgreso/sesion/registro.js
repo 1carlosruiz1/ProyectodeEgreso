@@ -54,11 +54,11 @@ formRegistro.addEventListener("submit", function (event) {
 formLogin.addEventListener("submit", function (event) {
   event.preventDefault();
   formData = new FormData(formLogin);
+
   fetch('login.php', {
     method: 'POST',
     body: formData
   })
-
     .then(res => res.json())
     .then(data => {
       console.log(data);
@@ -74,6 +74,7 @@ formLogin.addEventListener("submit", function (event) {
       } else if (data.email) {
         Swal.fire({
           icon: "warning",
+          title: "Email incorrecto",
           title: "Email incorrecto"
         });
       } else {

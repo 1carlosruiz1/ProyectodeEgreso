@@ -27,33 +27,13 @@ document.addEventListener("DOMContentLoaded", function (data) {
 
 
       } else {
-        // No logueado: opciones genéricas
-        dropdown.appendChild(crearOpcion("Iniciar sesión"));
-        console.log("no se logueo: " + data.error);
-
-        ['Perfil', 'Mis Reservas', 'Favoritos'].forEach(opcion => {
-          const li = document.createElement('li');
-li.textContent = opcion;
-li.classList.add('dropdown-opcion');
-li.addEventListener('mouseenter', () => {
-  li.classList.add('dropdown-opcion-hover');
-});
-li.addEventListener('mouseleave', () => {
-  li.classList.remove('dropdown-opcion-hover');
-});
-dropdown.appendChild(li);
-        });
+        // No logueado
+        Swal.fire("No hay anda para ver si no está logueado").then(() => {
+        window.location.href = "../index/index.html";
+      });
       } //fin del else q es por si no hay usuario registrado
     })
 })
-
-
-document.getElementById("iconoLogin").addEventListener("click", async e => { //el async y await es como decir: espera a que temrine la operacion 
-  e.preventDefault();
-  const res = await fetch("../sesion/controlExistenciaUsuario.php");
-  const { success } = await res.json();
-  if (!success) location.href = "../sesion/RegistroDeSesion.html";
-});
 
 const dropdown = document.createElement('ul');
 dropdown.classList.add('dropdown-menu');
@@ -96,3 +76,4 @@ function crearOpcion(texto) {
 
   return li;
 }
+//hasta acá lo q va en todas las paginas

@@ -8,19 +8,19 @@
     try {
 
 
-        $sql = "SELECT * FROM usuarios WHERE email = ?";
+        $sql = "SELECT * FROM usuario WHERE email = ?";
         $stmt = $con->prepare($sql);
         $stmt->execute([$email]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($usuario) {
             // Verificar la contraseña
-            if (password_verify($pass, $usuario['pass'])) {
+            if (password_verify($pass, $usuario['contraseña'])) {
                 $id = $usuario['ID_usuario'];
 
                 // Intentar encontrarlo como empleado
-                $sql = "SELECT * FROM usuarios 
-                    JOIN empleado ON usuarios.ID_usuario = empleado.ID_empleado 
+                $sql = "SELECT * FROM usuario 
+                    JOIN empleado ON usuario.ID_usuario = empleado.ID_empleado 
                     WHERE ID_empleado = ?";
                 $stmt = $con->prepare($sql);
                 $stmt->execute([$id]);
@@ -42,8 +42,8 @@
                 }
 
                 // Si no es empleado
-                $sql = "SELECT * FROM usuarios 
-                    JOIN cliente ON usuarios.ID_usuario = cliente.ID_cliente 
+                $sql = "SELECT * FROM usuario 
+                    JOIN cliente ON usuario.ID_usuario = cliente.ID_cliente 
                     WHERE ID_cliente = ?";
                 $stmt = $con->prepare($sql);
                 $stmt->execute([$id]);
@@ -63,7 +63,7 @@
                     exit;
                 }
             } else {
-                echo json_encode(["contraseña" => "Contraseña incorrectaaaa"]);
+                echo json_encode(["contraseña" => "Contraseña incorrecta"]);
             }
         } else {
             echo json_encode(["email" => "Email incorrecto"]);

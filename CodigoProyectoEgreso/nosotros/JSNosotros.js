@@ -96,25 +96,3 @@ function crearOpcion(texto) {
 
   return li;
 }
-
-// --- SCRIPTS QUE DEBEN IR SIEMPRE EN TODAS LAS PÁGINAS PARA MOSTRAR LOS CAMBIOS ---
-// Actualiza el logo del favicon si fue cambiado por el administrador
-const logoStorage = localStorage.getItem('logoRestaurante');
-if (logoStorage) {
-  document.getElementById('logo').href = logoStorage;
-}
-
-// Actualiza el número del footer si fue cambiado por el administrador
-const telefonoStorage = localStorage.getItem('telefonoRestaurante');
-if (telefonoStorage) {
-  const telefonoFooter = document.querySelector('.footer-phone-number');
-  if (telefonoFooter) telefonoFooter.textContent = telefonoStorage;
-}
-
-// Actualiza el título del header si fue cambiado por el administrador
-const tituloStorage = localStorage.getItem('tituloRestaurante');
-if (tituloStorage) {
-  const tituloHeader = document.querySelector('.TituloP h1');
-  if (tituloHeader) tituloHeader.textContent = tituloStorage;
-}
-// --- FIN SCRIPTS QUE DEBEN IR SIEMPRE ---
