@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Restablecer Contraseña</title>
+  <link rel="stylesheet" href="reinicioContraseña.css">
+</head>
+<body>
+
+  <div class="card">
+  <h2 class="card-title">Recuperar contraseña</h2>
+  <form id="formReinicio">
+    <!-- campo oculto para el token -->
+    <input type="hidden" id="token" name="token">
+
+    <label for="newPass">Nueva contraseña:</label>
+    <input type="password" id="newPass" name="newPass" required>
+
+    <label for="repeatPass">Repite la contraseña:</label>
+    <input type="password" id="repeatPass" name="repeatPass" required>
+
+    <button type="submit">Restablecer</button>
+  </form>
+</div>
+
+
+  <script src="reinicioContraseña.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
