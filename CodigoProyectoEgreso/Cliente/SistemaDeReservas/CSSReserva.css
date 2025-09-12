@@ -1,0 +1,240 @@
+form {
+    max-width: 400px;
+    margin: auto;
+  }
+/* Inputs de texto normales */
+.card input[type="text"],
+.card input[type="password"] {
+  cursor: text;
+}
+
+/* Inputs de fecha y hora: cursor y animación en icono */
+input[type="date"], 
+input[type="time"] {
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* blanco por defecto */
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+input[type="date"]:hover::-webkit-calendar-picker-indicator,
+input[type="time"]:hover::-webkit-calendar-picker-indicator,
+input[type="date"]:focus::-webkit-calendar-picker-indicator,
+input[type="time"]:focus::-webkit-calendar-picker-indicator {
+  /* efecto naranja acento */
+  filter: invert(41%) sepia(93%) saturate(7472%) hue-rotate(15deg) brightness(100%) contrast(100%);
+}
+
+/* Evitar highlight azul feo */
+.card input:focus {
+  outline: none;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+  label {
+    display: block;
+    margin-top: 5px;
+  }
+
+
+  input {
+    width: 40vh;
+    padding: 3px;
+    margin-top: 5px;
+    border-radius: 10px;
+  }
+
+
+  button {
+    margin-top: 15px;
+    padding: 10px;
+    width: 40vh;
+    height: 4vh;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+
+.card {
+    max-width: 38vw;
+    width: 55vh;
+    min-height: 48vh;
+    border-radius: 1vw;
+    margin: 6vh auto 0 auto;
+    background: var(--color-header);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 0 0 1px #fff1;
+    padding: 4vh 3vw 3vh 3vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: box-shadow 0.2s, transform 0.2s;
+    border: 1px solid #fff2;
+}
+
+
+.card::before {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 70px;
+    background: url('../../IMG/Logo.png') center/cover no-repeat;
+    border-radius: 50%;
+    margin: 0 auto 1.5vh auto;
+    box-shadow: 0 2px 12px var(--color-shadow);
+    border: 2px solid var(--color-accent);
+}
+
+.card input {
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 24px;
+    border: none;
+    border-bottom: 2px solid #888;
+    background: transparent;
+    color: #fff;
+    font-size: 1.1rem;
+    box-shadow: none;
+    transition: border-color 0.2s;
+    position: relative;
+}
+
+.card input:focus {
+    outline: none;
+    border-bottom: 2px solid var(--color-accent);
+    background: transparent;
+    color: #fff;
+}
+
+.card input:focus::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    animation: underlineGrow 0.3s linear;
+}
+
+.card button {
+    margin-top: 2vh;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: -120px;
+  background: #222;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  border-radius: 6px;
+  display: none;
+  list-style: none;
+  min-width: 120px;
+  z-index: 9999;
+}
+
+.IconoLogin {
+  position: relative;
+}
+
+.dropdown-opcion {
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  color: var(--color-white);
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s, text-decoration 0.2s;
+}
+
+.dropdown-opcion-hover,
+.dropdown-opcion:hover {
+  color: var(--color-accent);
+  background: rgba(255,102,20,0.08);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+}
+
+img{
+  display: flex;
+
+  height: 300px;;
+}
+#divMesas {
+  text-align: center;
+  margin-top: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+#divMesas img {
+  margin-top: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  max-width: 100%;
+  height: auto;
+}
+
+#btnReservar {
+  background-color: #ff6600; /* naranja acento */
+  margin-top: 20px;
+}
+
+#btnReservar:hover {
+  background-color: #e65c00;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.95);}
+  to {opacity: 1; transform: scale(1);}
+}
+#numeroMesa {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #4CAF50;   /* borde verde */
+  border-radius: 8px;          /* bordes redondeados */
+  background-color: #f9f9f9;   /* fondo gris claro */
+  font-size: 16px;
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  appearance: none;            /* quita la flecha por defecto */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Hover */
+#numeroMesa:hover {
+  border-color: #45a049;
+}
+
+/* Focus */
+#numeroMesa:focus {
+  border-color: #2196F3;
+  box-shadow: 0 0 5px rgba(33,150,243,0.5);
+}
+
+/* Opciones */
+#numeroMesa option {
+  padding: 10px;
+}
+h2{
+  display: flex;
+  padding-top: 30px;
+  justify-content: center;
+}

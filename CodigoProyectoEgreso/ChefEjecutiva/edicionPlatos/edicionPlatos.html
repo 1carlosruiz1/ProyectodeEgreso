@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <link id="logo" rel="shortcut icon" href="../../IMG/Logo.png"/>
+    <title>Edicion platos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../CSSGeneral.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="TituloP">
+            <h1>Los Magorditos</h1>
+        </div>
+        <nav>
+            <ul class="ul-header">
+                <a href="../../index/index.html"><li class="li-header">Inicio</li></a>
+                <a href="../../SistemaDeReservas/Reserva.html"><li class="li-header">Reservas</li></a>
+                <a href="../../menu/menu.html"><li class="li-header">Menu</li></a>
+                <a href="../../nosotros/Nosotros.html"><li class="li-header">Nosotros</li></a>
+            </ul>
+        </nav>
+        <div class="iconos-header">
+        <a href="../../carrito/carrito.html"><nav class="IconoCarrito" id="iconoCarrito" aria-label="Carrito de compras">
+            <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M960.1 258.4H245.8l-36.1-169H63.9v44h110.2l26.7 125 100.3 469.9 530 0.4v-44l-494.4-0.3-22.6-105.9H832l128.1-320.1z m-65 44L855.6 401H276.3l-21.1-98.6h639.9zM304.8 534.5L279.7 417h569.5l-47 117.5H304.8z" fill="#ededed"></path><path d="M375.6 810.6c28.7 0 52 23.3 52 52s-23.3 52-52 52-52-23.3-52-52 23.3-52 52-52m0-20c-39.7 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.3-72-72-72zM732 810.6c28.7 0 52 23.3 52 52s-23.3 52-52 52-52-23.3-52-52 23.3-52 52-52m0-20c-39.7 0-72 32.2-72 72s32.2 72 72 72c39.7 0 72-32.2 72-72s-32.3-72-72-72zM447.5 302.4h16v232.1h-16zM652 302.4h16v232.1h-16z" fill="#ededed"></path><path d="M276.3 401l3.4 16-3.4-16z" fill="#ededed"></path></g></svg>
+        </nav></a>
+        <nav class="IconoLogin" id="iconoLogin">
+            
+             <a href="#" aria-label="Iniciar sesión">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 7C9.65685 7 11 5.65685 11 4C11 2.34315 9.65685 1 8 1C6.34315 1 5 2.34315 5 4C5 5.65685 6.34315 7 8 7Z" fill="#ffffff"></path>
+                    <path d="M14 12C14 10.3431 12.6569 9 11 9H5C3.34315 9 2 10.3431 2 12V15H14V12Z" fill="#ffffff"></path>
+                </svg>
+            </a>
+        </nav>
+    </div>
+    </header>
+            <!-- Boton Download (Hacer para tercer entrega) -->
+        <!-- <svg width="73" height="73" viewBox="0 0 73 73" fill="none" xmlns="http://www.w3.org/2000/svg" class="boton" type="file">
+    <path d="M36.5003 48.6667L21.292 33.4583L25.5503 29.0479L33.4587 36.9563V12.1667H39.542V36.9563L47.4503 29.0479L51.7087 33.4583L36.5003 48.6667ZM18.2503 60.8333C16.5774 60.8333 15.1453 60.2377 13.954 59.0464C12.7627 57.855 12.167 56.4229 12.167 54.75V45.625H18.2503V54.75H54.7503V45.625H60.8337V54.75C60.8337 56.4229 60.238 57.855 59.0467 59.0464C57.8554 60.2377 56.4232 60.8333 54.7503 60.8333H18.2503Z" fill="#fff"/>
+    </svg> -->
+<form id="formMenu" class="formMenu" method="post" enctype="multipart/form-data"> 
+    <!-- preguntar auto encuypted -->
+    <div class="container">
+        
+    <div class="espacio1">
+    
+        <label>Subir imagen</label>
+        <div class="input-file-container">
+    <input type="file" name="imagen" id="imagen" required>
+    </div>
+    <div class="div">
+        <img src="../../IMG/pixlr-image-generator-68b1a1cc864735270dbbcc4b.png" id="foto">
+    </div>
+
+    <br>
+    <label>Nombre</label>
+    <input type="text" name="Nombre" required><br>
+      
+    <label>Precio:</label>
+    <input type="text" placeholder="$" name="Precio" id="Precio" required><br>
+
+
+    <label>Temporada:</label>
+    <select name="Temporada" id="temporada" required>
+    <option value="Verano">Verano</option>
+    <option value="Otoño">Otoño</option>
+    <option value="Invierno">Invierno</option>
+    <option value="Primavera">Primavera</option>
+    </select><br>
+
+    <label>Tiempo de preparación en minutos:</label>
+    <input type="text" placeholder="Ej: 30 " name="tiempoPreparacion" id="tiempoPreparacion" required><br>
+
+    <label>Descripción:</label>
+    <textarea placeholder="Escribe una breve descripcion del plato:" class="DescripcionPlato" name="DescripcionPlato" required></textarea><br>
+    
+    <input type="submit" value="Subir">
+
+
+    </div>
+    <div class="espacio2">
+        <img src="../../IMG/Logo.png" alt="Logo" class="imglogo">
+        <p class="T1">El sabor de la tradición en cada bocado</p>
+    </div>
+
+    </div>
+
+</form>
+
+    <footer>
+    <div class="footer-container">
+        <!-- Teléfono -->
+        <div class="footer-phone">
+            <strong>Teléfono:</strong>
+            <div class="footer-phone-number">+598 1234 5678</div>
+        </div>
+        <!-- Menú vertical -->
+        <ul class="footer-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#">Promociones</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Nosotros</a></li>
+        </ul>
+        <!-- Mapa interactivo -->
+        <div class="footer-map">
+            <iframe 
+                src="https://www.google.com/maps?q=De+los+Colibries,+15800+Ciudad+de+la+Costa,+Departamento+de+Canelones&output=embed" allowfullscreen="" loading="lazy"
+            ></iframe>
+        </div>
+    </div>
+</footer>
+
+    <script src="jsEdicionPlatos.js"></script>
+</body>
+</html>

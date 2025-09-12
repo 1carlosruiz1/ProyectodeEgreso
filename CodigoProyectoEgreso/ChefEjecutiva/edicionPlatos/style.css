@@ -1,0 +1,245 @@
+/* root */
+:root {
+    --color-bg: #1e1e1e;
+    --color-header: #0F0F0F;
+    --color-accent: #FF6614;
+    --color-accent-dark: #7a3a10;
+    --color-text: #A1A1A1;
+    --color-white: #fff;
+    --color-shadow: rgba(0,0,0,0.15);
+    --font-main: 'Inconsolata', monospace;
+    --font-title: 'Irish Grover', system-ui;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4vw;
+    margin: 5vh auto 0 auto;
+    max-width: 1100px;
+    min-height: 70vh;
+    background: var(--color-header);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #0003;
+    padding: 3vw 2vw;
+}
+
+.espacio1 {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5vh;
+    background: rgba(255,255,255,0.01);
+    border-radius: 14px;
+    padding: 2vw 2vw 2vw 2vw;
+    box-shadow: 0 2px 12px #0002;
+    min-width: 320px;
+    max-width: 420px;
+}
+
+.espacio2{
+    display: flex;
+    flex-direction: column;
+     align-items: center; /*el align es apra el eje transversal, en este caso porque lo cambiamosa column */
+     padding: 25px 0;
+     }
+
+.formMenu label {
+    font-family: var(--font-title);
+    color: var(--color-accent);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.formMenu input[type="file"] {
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    background: none;
+    border: none;
+}
+
+.formMenu input[type="submit"] {
+    background: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5em 1.5em;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px #0002;
+}
+.formMenu input[type="submit"]:hover {
+    background: var(--color-accent-dark);
+}
+
+.div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#foto {
+    width: 260px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px #0003;
+    border: 2px solid var(--color-accent);
+    background: #fff1;
+}
+
+#mensaje {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+    text-align: center;
+    min-height: 1.5em;
+}
+
+label {
+    font-family: var(--font-main);
+    color: var(--color-white);
+    font-size: 1.1rem;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 0.6em 0.8em;
+    border-radius: 8px;
+    border: 1px solid var(--color-accent);
+    background: #181818;
+    color: var(--color-white);
+    font-size: 1.1rem;
+    transition: border 0.2s;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border: 2px solid var(--color-accent-dark);
+    background: #222;
+}
+
+.DescripcionPlato {
+    width: 100%;
+    min-height: 7vh;
+    border-radius: 10px;
+    padding: 0.7em 1em;
+    font-size: 1.1rem;
+    background: #181818;
+    color: var(--color-white);
+    border: 1px solid var(--color-accent);
+    resize: vertical;
+    font-family: var(--font-main);
+}
+
+.DescripcionPlato:focus {
+    outline: none;
+    border: 2px solid var(--color-accent-dark);
+    background: #222;
+}
+
+.temporada {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2vh;
+    padding: 2vw 0;
+}
+
+.imglogo {
+    width: 18vw;
+    max-width: 260px;
+    min-width: 120px;
+    height: auto;
+    border-radius: 60px;
+    box-shadow: 0 2px 12px #0003;
+}
+
+.T1 {
+    color: var(--color-white);
+    font-family: Mixed, var(--font-main);
+    font-size: 2rem;
+    text-align: center;
+    width: 90%;
+    text-shadow: 2px 2px 8px #000;
+    pointer-events: none;
+    margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 4vw 2vw;
+    }
+    .espacio1, .espacio2 {
+        max-width: 98vw;
+        width: 100%;
+        min-width: unset;
+        padding: 2vw 2vw;
+    }
+    .imglogo {
+        width: 40vw;
+        min-width: 80px;
+    }
+}
+
+select {
+  width: 100%;              /* que ocupe todo el ancho */
+  padding: 8px;             /* espacio interno */
+  border-radius: 5px;       /* esquinas redondeadas */
+  font-size: 14px;          /* tamaño de letra */
+  background-color: #141414;
+   border: 2px solid rgb(255, 102, 0);
+   color: gray; 
+}
+
+select:focus {
+  border-color: #888;       /* borde más oscuro al hacer foco */
+  outline: none;            /* quita el borde azul default */
+}
+
+/* contenedor para estilizar mejor */
+.input-file-container {
+  position: relative;
+  width: 100%;
+}
+
+.input-file-container input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid rgb(255, 102, 0); /* mismo borde naranja */
+  background-color: #141414;           /* mismo fondo que select */
+  color: gray;                          /* texto gris */
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.input-file-container input[type="file"]::-webkit-file-upload-button {
+  background: rgb(255, 102, 0);  /* botón naranja */
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-file-container input[type="file"]::-ms-browse {
+  background: rgb(255, 102, 0);
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-file-container input[type="file"]:focus {
+  outline: none;
+  border-color: #ff6600; /* borde más intenso al enfocar */
+}
