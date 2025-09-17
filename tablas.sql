@@ -8,13 +8,13 @@ CREATE TABLE Usuario (
   apellido VARCHAR(100),
   email VARCHAR(150) UNIQUE,
   contraseña VARCHAR(150),
-  estado VARCHAR(50)
+  estado boolean
 );
 
 CREATE TABLE CodigoRecuperacion (
   ID_usuario INT,
   codigo VARCHAR(100),
-  fechaExpiracion DATE,
+  fechaExpiracion DATETIME,
   FOREIGN KEY (ID_usuario) REFERENCES Usuario(ID_usuario)
 );
 
