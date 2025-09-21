@@ -8,7 +8,7 @@ CREATE TABLE Usuario (
   apellido VARCHAR(100),
   email VARCHAR(150) UNIQUE,
   contraseña VARCHAR(150),
-  estado boolean
+  estado BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE CodigoRecuperacion (
@@ -37,7 +37,7 @@ CREATE TABLE Plato (
   precio DECIMAL(10,2),
   temporada VARCHAR(50),
   tiempoPreparacion INT,
-  promocion BOOLEAN
+  promocion double
 );
 
 CREATE TABLE Favorito (
