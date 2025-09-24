@@ -8,7 +8,7 @@ CREATE TABLE Usuario (
     apellido VARCHAR(100),
     email VARCHAR(150) UNIQUE,
     contraseña VARCHAR(150),
-    estado VARCHAR(50)
+    estado BOOLEAN default true
 );
 
 CREATE TABLE CodigoRecuperacion (
@@ -131,7 +131,6 @@ CREATE TABLE Ingrediente (
     unidadMedida VARCHAR(50)
 );
 
-
 CREATE TABLE Necesita (
     ID_plato INT,
     ID_ingrediente INT,
@@ -141,12 +140,11 @@ CREATE TABLE Necesita (
     FOREIGN KEY (ID_ingrediente) REFERENCES Ingrediente(ID_ingrediente)
 );
 
-
 CREATE TABLE Stock (
     ID_stock INT AUTO_INCREMENT PRIMARY KEY,
     stock DECIMAL(10,2),
     ID_ingrediente INT,
     fechaIngreso DATE,
     fechaVencimiento DATE,
-    FOREIGN KEY (ID_ingrediente) REFERENCES Ingrediente(ID_ingrediente)
+    FOREIGN KEY (ID_ingrediente) REFERENCES Ingrediente(ID_ingrediente) ON DELETE CASCADE
 );
