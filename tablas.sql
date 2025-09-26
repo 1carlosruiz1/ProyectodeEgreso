@@ -63,12 +63,12 @@ CREATE TABLE EtiquetaCliente (
     FOREIGN KEY (ID_etiqueta) REFERENCES Etiqueta(ID_etiqueta),
     FOREIGN KEY (ID_cliente) REFERENCES Cliente(ID_cliente)
 );
-
 CREATE TABLE Comentario (
     ID_comentario INT AUTO_INCREMENT PRIMARY KEY,
     ID_cliente INT,
     infoComentario TEXT,
     puntaje INT,
+    fechaComentario DATE,
     FOREIGN KEY (ID_cliente) REFERENCES Cliente(ID_cliente)
 );
 
@@ -84,7 +84,7 @@ CREATE TABLE Reserva (
     confirmado BOOLEAN,
     horaInicio TIME,
     horaFin TIME,
-    cancelado BOOLEAN,
+    cancelado BOOLEAN default false,
     fechaReserva DATE,
     fechaRealizacion DATE,
     FOREIGN KEY (ID_cliente) REFERENCES Cliente(ID_cliente),
@@ -134,7 +134,7 @@ CREATE TABLE Ingrediente (
 CREATE TABLE Necesita (
     ID_plato INT,
     ID_ingrediente INT,
-    cantidad DECIMAL(10,2),
+    cantidad double,
     PRIMARY KEY (ID_plato, ID_ingrediente),
     FOREIGN KEY (ID_plato) REFERENCES Plato(ID_plato),
     FOREIGN KEY (ID_ingrediente) REFERENCES Ingrediente(ID_ingrediente)
@@ -142,7 +142,7 @@ CREATE TABLE Necesita (
 
 CREATE TABLE Stock (
     ID_stock INT AUTO_INCREMENT PRIMARY KEY,
-    stock DECIMAL(10,2),
+    stock INT,
     ID_ingrediente INT,
     fechaIngreso DATE,
     fechaVencimiento DATE,
