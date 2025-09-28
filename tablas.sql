@@ -81,7 +81,6 @@ CREATE TABLE Reserva (
     ID_reserva INT AUTO_INCREMENT PRIMARY KEY,
     ID_cliente INT,
     ID_mesa INT,
-    confirmado BOOLEAN,
     horaInicio TIME,
     horaFin TIME,
     cancelado BOOLEAN default false,
