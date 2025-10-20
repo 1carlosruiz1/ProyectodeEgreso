@@ -99,6 +99,7 @@ CREATE TABLE Pedido (
     fechaEsperada DATETIME,
     ID_cliente INT,
     ID_mozo INT,
+    cocinado boolean default false,
     FOREIGN KEY (ID_mesa) REFERENCES Mesa(ID_mesa),
     FOREIGN KEY (ID_cliente) REFERENCES Cliente(ID_cliente),
     FOREIGN KEY (ID_mozo) REFERENCES Empleado(ID_empleado)
@@ -110,6 +111,7 @@ CREATE TABLE Entrega (
     ID_delivery INT,
     latitud  DECIMAL(10, 7),
 	longitud DECIMAL(10, 7),
+    telefono INT,
     confirmacionDelivery BOOLEAN,
     confirmacionCliente BOOLEAN,
     FOREIGN KEY (ID_pedido) REFERENCES Pedido(ID_pedido),
