@@ -139,7 +139,7 @@ CREATE TABLE Necesita (
     cantidad double,
     PRIMARY KEY (ID_plato, ID_ingrediente),
     FOREIGN KEY (ID_plato) REFERENCES Plato(ID_plato),
-    FOREIGN KEY (ID_ingrediente) REFERENCES Ingrediente(ID_ingrediente)
+    FOREIGN KEY (ID_ingrediente) REFERENCES Ingrediente(ID_ingrediente) ON DELETE CASCADE
 );
 
 CREATE TABLE Stock (
