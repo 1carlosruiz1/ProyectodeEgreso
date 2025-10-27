@@ -172,7 +172,8 @@ historia text,
 horarios text,
 mision text,
 vision text,
-valores text
+valores text,
+telefono int
 );
 
 CREATE table Cambia(
