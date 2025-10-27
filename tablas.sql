@@ -118,8 +118,8 @@ CREATE TABLE Entrega (
     telefono INT,
     confirmacionDelivery BOOLEAN,
     confirmacionCliente BOOLEAN,
-    FOREIGN KEY (ID_pedido) REFERENCES Pedido(ID_pedido),
-    FOREIGN KEY (ID_delivery) REFERENCES Empleado(ID_empleado)
+    FOREIGN KEY (ID_pedido) REFERENCES Pedido(ID_pedido) on delete cascade,
+    FOREIGN KEY (ID_delivery) REFERENCES Empleado(ID_empleado) on delete cascade
 );
 
 CREATE TABLE SeCompone (
@@ -127,8 +127,8 @@ CREATE TABLE SeCompone (
     ID_plato INT,
     cantidad INT,
     PRIMARY KEY (ID_pedido, ID_plato),
-    FOREIGN KEY (ID_pedido) REFERENCES Pedido(ID_pedido),
-    FOREIGN KEY (ID_plato) REFERENCES Plato(ID_plato)
+    FOREIGN KEY (ID_pedido) REFERENCES Pedido(ID_pedido) on delete cascade,
+    FOREIGN KEY (ID_plato) REFERENCES Plato(ID_plato) on delete cascade
 );
 
 CREATE TABLE Ingrediente (
@@ -160,6 +160,26 @@ ID_modificación INT auto_increment primary key,
 ID_gerente INT,
 ID_reserva INT,
 fechaModificacion date,
-foreign key (ID_empleado) REFERENCES Empleado (ID_empleado),
-foreign key (ID_reserva) REFERENCES Reserva (ID_reserva)
+foreign key (ID_empleado) REFERENCES Empleado (ID_empleado) on delete cascade,
+foreign key (ID_reserva) REFERENCES Reserva (ID_reserva) on delete cascade
+);
+
+CREATE TABLE Restaurante(
+ID_restaurante INT AUTO_INCREMENT PRIMARY KEY,
+nombre varchar (200),
+logo varchar(200),
+historia text,
+horarios text,
+mision text,
+vision text,
+valores text
+);
+
+CREATE table Cambia(
+ID_cambio int auto_increment primary key,
+ID_empleado INT,
+ID_restaurante INT,
+fecha DATE,
+foreign key (ID_empleado) references Empleado (ID_empleado) ON DELETE cascade,
+foreign key (ID_restaurante) references Restaurante (ID_restaurante) on delete cascade
 );
