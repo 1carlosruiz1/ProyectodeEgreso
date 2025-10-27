@@ -157,7 +157,7 @@ CREATE TABLE Stock (
 
 CREATE TABLE Modifica (
 ID_modificación INT auto_increment primary key,
-ID_empleado INT,
+ID_gerente INT,
 ID_reserva INT,
 fechaModificacion date,
 foreign key (ID_empleado) REFERENCES Empleado (ID_empleado),
