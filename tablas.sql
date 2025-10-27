@@ -154,3 +154,12 @@ CREATE TABLE Stock (
     fechaVencimiento DATE,
     FOREIGN KEY (ID_ingrediente) REFERENCES Ingrediente(ID_ingrediente) ON DELETE CASCADE
 );
+
+CREATE TABLE Modifica (
+ID_modificación INT auto_increment primary key,
+ID_empleado INT,
+ID_reserva INT,
+fechaModificacion date,
+foreign key (ID_empleado) REFERENCES Empleado (ID_empleado),
+foreign key (ID_reserva) REFERENCES Reserva (ID_reserva)
+);
