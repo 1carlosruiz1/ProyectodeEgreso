@@ -50,19 +50,23 @@ CREATE TABLE Favorito (
     FOREIGN KEY (ID_plato) REFERENCES Plato(ID_plato)
 );
 
-CREATE TABLE Etiqueta (
-    ID_etiqueta INT AUTO_INCREMENT PRIMARY KEY,
-    nombreEtiqueta VARCHAR(100)
+CREATE TABLE Etiqueta(
+    ID_etiqueta INT primary key auto_increment,
+    ID_cliente INT,
+    fecha date,
+    comentario text,
+    tipo varchar(50),
+    FOREIGN KEY (ID_cliente) REFERENCES Cliente(ID_cliente) ON DELETE CASCADE
 );
 
-CREATE TABLE EtiquetaCliente (
-    ID_etiqueta INT,
-    ID_cliente INT,
-    cantidad INT DEFAULT 0,
-    PRIMARY KEY (ID_etiqueta, ID_cliente),
-    FOREIGN KEY (ID_etiqueta) REFERENCES Etiqueta(ID_etiqueta),
-    FOREIGN KEY (ID_cliente) REFERENCES Cliente(ID_cliente)
+CREATE TABLE Agrega(
+	ID_mozo int,
+	ID_etiqueta int,
+	foreign key (ID_mozo) REFERENCES Empleado(ID_empleado),
+	foreign key (ID_etiqueta) references Etiqueta(ID_etiqueta) ON DELETE CASCADE,
+    primary key (ID_mozo, ID_etiqueta)
 );
+
 CREATE TABLE Comentario (
     ID_comentario INT AUTO_INCREMENT PRIMARY KEY,
     ID_cliente INT,
