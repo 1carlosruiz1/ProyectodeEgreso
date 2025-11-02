@@ -47,7 +47,7 @@ CREATE TABLE Favorito (
     ID_plato INT,
     PRIMARY KEY (ID_cliente, ID_plato),
     FOREIGN KEY (ID_cliente) REFERENCES Cliente(ID_cliente),
-    FOREIGN KEY (ID_plato) REFERENCES Plato(ID_plato)
+    FOREIGN KEY (ID_plato) REFERENCES Plato(ID_plato) ON DELETE CASCADE
 );
 
 CREATE TABLE Etiqueta(
@@ -142,7 +142,7 @@ CREATE TABLE Necesita (
     ID_ingrediente INT,
     cantidad double,
     PRIMARY KEY (ID_plato, ID_ingrediente),
-    FOREIGN KEY (ID_plato) REFERENCES Plato(ID_plato),
+    FOREIGN KEY (ID_plato) REFERENCES Plato(ID_plato) ON DELETE CASCADE,
     FOREIGN KEY (ID_ingrediente) REFERENCES Ingrediente(ID_ingrediente) ON DELETE CASCADE
 );
 
@@ -160,7 +160,7 @@ ID_modificación INT auto_increment primary key,
 ID_gerente INT,
 ID_reserva INT,
 fechaModificacion date,
-foreign key (ID_empleado) REFERENCES Empleado (ID_empleado) on delete cascade,
+foreign key (ID_gerente) REFERENCES Empleado (ID_empleado) on delete cascade,
 foreign key (ID_reserva) REFERENCES Reserva (ID_reserva) on delete cascade
 );
 
