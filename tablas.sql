@@ -13,7 +13,7 @@ CREATE TABLE Usuario (
 
 CREATE TABLE CodigoRecuperacion (
     ID_usuario INT,
-    codigo VARCHAR(100),
+    codigo VARCHAR(255),
     fechaExpiracion DATETIME,
     PRIMARY KEY (ID_usuario, codigo),
     FOREIGN KEY (ID_usuario) REFERENCES Usuario(ID_usuario)
@@ -167,7 +167,6 @@ foreign key (ID_reserva) REFERENCES Reserva (ID_reserva) on delete cascade
 CREATE TABLE Restaurante(
 ID_restaurante INT AUTO_INCREMENT PRIMARY KEY,
 nombre varchar (200),
-logo varchar(200),
 historia text,
 horarios text,
 mision text,
