@@ -104,6 +104,7 @@ CREATE TABLE Pedido (
     ID_cliente INT,
     ID_mozo INT,
     cocinado boolean default false,
+    confirmacionMozo boolean default false,
     FOREIGN KEY (ID_mesa) REFERENCES Mesa(ID_mesa),
     FOREIGN KEY (ID_cliente) REFERENCES Cliente(ID_cliente),
     FOREIGN KEY (ID_mozo) REFERENCES Empleado(ID_empleado)
