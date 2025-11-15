@@ -1,4 +1,24 @@
 use BDProyecto;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- Vaciar tablas
+TRUNCATE TABLE Stock;
+TRUNCATE TABLE Necesita;
+TRUNCATE TABLE Plato;
+TRUNCATE TABLE Ingrediente;
+TRUNCATE TABLE Mesa;
+TRUNCATE TABLE Restaurante;
+
+-- Reiniciar AUTO_INCREMENT
+ALTER TABLE Stock AUTO_INCREMENT = 1;
+ALTER TABLE Necesita AUTO_INCREMENT = 1;
+ALTER TABLE Plato AUTO_INCREMENT = 1;
+ALTER TABLE Ingrediente AUTO_INCREMENT = 1;
+ALTER TABLE Mesa AUTO_INCREMENT = 1;
+ALTER TABLE Restaurante AUTO_INCREMENT = 1;
+
+-- Habilitar nuevamente las restricciones
+SET FOREIGN_KEY_CHECKS = 1;
 -- Insertar ingredientes
 INSERT INTO Ingrediente (nombreIngrediente, unidadMedida) VALUES
 ('Carne molida', 'g'),
@@ -98,42 +118,43 @@ INSERT INTO Necesita (ID_plato, ID_ingrediente, cantidad) VALUES
 (10,19,200);
 -- Insertar stock inicial
 INSERT INTO Stock (stock, ID_ingrediente, fechaIngreso, fechaVencimiento) VALUES
-(2000, 1, '2025-08-20', '2025-12-10'),   -- Carne molida
-(1000, 2, '2025-07-25', '2026-03-01'),   -- Pasta para lasagna
-(500, 3, '2025-08-10', '2025-09-20'),    -- Queso rallado
-(800, 4, '2025-08-05', '2025-09-15'),    -- Salsa bechamel
-(500, 5, '2025-09-01', '2025-09-15'),    -- Lechuga romana
-(200, 6, '2025-08-20', '2026-01-01'),    -- Crutones
-(150, 7, '2025-08-25', '2025-09-25'),    -- Queso parmesano
-(200, 8, '2025-08-10', '2025-09-20'),    -- Aderezo César
-(500, 9, '2025-08-25', '2025-09-25'),    -- Masa de pizza
-(300, 10, '2025-08-20', '2025-10-10'),   -- Salsa de tomate
-(400, 11, '2025-08-22', '2025-09-20'),   -- Queso mozzarella
-(50, 12, '2025-09-01', '2025-09-15'),    -- Albahaca fresca
-(500, 13, '2025-08-20', '2026-02-01'),   -- Spaghetti
-(50, 14, '2025-08-30', '2025-09-15'),    -- Huevos
-(200, 15, '2025-08-28', '2025-09-15'),   -- Panceta
-(300, 16, '2025-08-30', '2025-09-18'),   -- Zanahoria
-(400, 17, '2025-08-25', '2025-09-20'),   -- Papa
-(100, 18, '2025-08-28', '2025-09-18'),   -- Apio
-(1000, 19, '2025-08-27', '2025-09-15'),  -- Caldo de verduras
-(50, 20, '2025-08-30', '2025-09-25'),    -- Pan de hamburguesa
-(500, 21, '2025-08-28', '2025-09-18'),   -- Carne de hamburguesa
-(200, 22, '2025-09-01', '2025-09-18'),   -- Tomate
-(100, 23, '2025-08-25', '2025-09-20'),   -- Queso cheddar
-(150, 24, '2025-08-25', '2025-09-20'),   -- Salsa especial
-(300, 25, '2025-08-28', '2025-09-20'),   -- Muslo de pollo
-(500, 26, '2025-08-01', '2026-08-01'),   -- Aceite de oliva
-(50, 27, '2025-08-05', '2025-10-01'),    -- Ajo
-(50, 28, '2025-08-01', '2026-03-01'),    -- Especias varias
-(200, 29, '2025-09-01', '2025-09-15'),   -- Filete de pescado
-(50, 30, '2025-08-30', '2025-09-20'),    -- Limón
-(50, 31, '2025-08-28', '2025-09-18'),    -- Perejil
-(200, 32, '2025-08-25', '2025-09-25'),   -- Masa quebrada
-(150, 33, '2025-09-01', '2025-09-18'),   -- Espinaca
-(100, 34, '2025-08-25', '2025-09-20'),   -- Queso ricotta
-(200, 35, '2025-08-01', '2026-03-01'),   -- Arroz arborio
-(150, 36, '2025-09-01', '2025-09-18');   -- Champiñones
+(2000, 1, '2025-11-10', '2025-11-18'),   -- Carne molida (4 días para vencer)
+(1000, 2, '2025-11-05', '2025-12-03'),   -- Pasta para lasagna (20 días para vencer)
+(500, 3, '2025-11-08', '2025-11-17'),    -- Queso rallado (4 días para vencer)
+(800, 4, '2025-11-01', '2025-11-12'),    -- Salsa bechamel (vencido)
+(500, 5, '2025-11-07', '2025-11-21'),    -- Lechuga romana (8 días)
+(200, 6, '2025-11-10', '2025-11-23'),    -- Crutones (10 días)
+(150, 7, '2025-11-05', '2025-11-18'),    -- Queso parmesano (5 días)
+(200, 8, '2025-11-08', '2025-11-24'),    -- Aderezo César (11 días)
+(500, 9, '2025-11-06', '2025-11-25'),    -- Masa de pizza (12 días)
+(300, 10, '2025-11-03', '2025-11-18'),   -- Salsa de tomate (5 días)
+(400, 11, '2025-11-07', '2025-11-23'),   -- Queso mozzarella (10 días)
+(50, 12, '2025-11-10', '2025-11-22'),    -- Albahaca fresca (9 días)
+(500, 13, '2025-11-05', '2025-11-27'),   -- Spaghetti (14 días)
+(50, 14, '2025-11-01', '2025-11-10'),    -- Huevos (vencido)
+(200, 15, '2025-11-08', '2025-11-19'),   -- Panceta (4 días)
+(300, 16, '2025-11-02', '2025-11-20'),   -- Zanahoria (7 días)
+(400, 17, '2025-11-04', '2025-11-21'),   -- Papa (8 días)
+(100, 18, '2025-11-06', '2025-11-19'),   -- Apio (4 días)
+(1000, 19, '2025-11-07', '2025-11-28'),  -- Caldo de verduras (15 días)
+(50, 20, '2025-11-03', '2025-11-17'),    -- Pan de hamburguesa (4 días)
+(500, 21, '2025-11-02', '2025-11-22'),   -- Carne de hamburguesa (8 días)
+(200, 22, '2025-11-05', '2025-11-23'),   -- Tomate (10 días)
+(100, 23, '2025-11-01', '2025-11-14'),   -- Queso cheddar (vencido)
+(150, 24, '2025-11-03', '2025-11-21'),   -- Salsa especial (8 días)
+(300, 25, '2025-11-04', '2025-11-24'),   -- Muslo de pollo (11 días)
+(500, 26, '2025-11-02', '2025-11-30'),   -- Aceite de oliva (18 días)
+(50, 27, '2025-11-01', '2025-11-13'),    -- Ajo (vencido)
+(50, 28, '2025-11-03', '2025-11-25'),    -- Especias varias (12 días)
+(200, 29, '2025-11-05', '2025-11-21'),   -- Filete de pescado (8 días)
+(50, 30, '2025-11-02', '2025-11-18'),    -- Limón (5 días)
+(50, 31, '2025-11-06', '2025-11-23'),    -- Perejil (9 días)
+(200, 32, '2025-11-03', '2025-11-22'),   -- Masa quebrada (9 días)
+(150, 33, '2025-11-04', '2025-11-18'),   -- Espinaca (4 días)
+(100, 34, '2025-11-02', '2025-11-21'),   -- Queso ricotta (8 días)
+(200, 35, '2025-11-01', '2025-11-28'),   -- Arroz arborio (15 días)
+(150, 36, '2025-11-05', '2025-11-20');   -- Champiñones (5 días)
+
 
 
 INSERT INTO Mesa (numeroMesa) VALUES (1);
