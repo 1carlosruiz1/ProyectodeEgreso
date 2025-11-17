@@ -188,4 +188,53 @@ INSERT INTO Restaurante (
 
 
 
+INSERT INTO Favorito VALUES
+(6, 1),
+(6, 3),
+(7, 2),
+(7, 6),
+(8, 4);
+INSERT INTO Reserva (ID_cliente, ID_mesa, horaInicio, horaFin, cancelado, fechaReserva, fechaRealizacion)
+VALUES
+(6, 1, '20:00', '22:00', 0, '2025-11-10', '2025-11-05'),
+(7, 3, '21:00', '23:00', 0, '2025-11-12', '2025-11-02'),
+(8, 2, '19:30', '21:00', 1, '2025-11-15', '2025-11-04');
+INSERT INTO Pedido (fechaPedido, especificaciones, ID_mesa, puntosCompra, fechaEsperada, ID_cliente, ID_mozo, cocinado, confirmacionMozo)
+VALUES
+('2025-11-10 20:15', 'Sin sal', 1, 20, '2025-11-10 20:45', 6, 2, 1, 1),
+('2025-11-12 21:10', '', 3, 15, '2025-11-12 21:40', 7, 2, 1, 1),
+('2025-11-14 19:50', 'Agregar queso extra', 2, 10, '2025-11-14 20:20', 8, 2, 0, 1);
+INSERT INTO SeCompone VALUES
+(1, 4, 1),   -- Juan: Spaghetti Carbonara
+(1, 2, 1),   --         Ensalada César
 
+(2, 1, 1),   -- María: Lasagna
+(2, 10, 1),  --         Risotto
+
+(3, 6, 1),   -- Luis: Hamburguesa
+(3, 5, 1);   --       Sopa de verduras
+INSERT INTO Entrega (ID_pedido, ID_delivery, latitud, longitud, telefono, confirmacionDelivery, confirmacionCliente)
+VALUES
+(3, 5, -34.9011, -56.1645, 099123456, 1, 0);
+INSERT INTO Comentario (ID_cliente, infoComentario, puntaje, fechaComentario)
+VALUES
+(6, 'Excelente atención y comida.', 5, '2025-11-11'),
+(7, 'Muy rico, pero tardaron un poco.', 4, '2025-11-13'),
+(8, 'Bien, aunque la sopa estaba tibia.', 3, '2025-11-15');
+INSERT INTO Etiqueta (ID_cliente, fecha, comentario, tipo)
+VALUES
+(6, '2025-11-11', 'Muy buena atención', 'Servicio'),
+(7, '2025-11-13', 'La comida estaba excelente', 'Comida'),
+(8, '2025-11-15', 'Entrega rápida', 'Delivery');
+INSERT INTO Agrega VALUES
+(2, 1),
+(2, 2),
+(2, 3);
+INSERT INTO Modifica (ID_gerente, ID_reserva, fechaModificacion)
+VALUES
+(1, 1, '2025-11-08'),
+(1, 2, '2025-11-10');
+INSERT INTO Cambia (ID_empleado, ID_restaurante, fecha)
+VALUES
+(1, 1, '2025-11-01'),
+(1, 1, '2025-11-10');
